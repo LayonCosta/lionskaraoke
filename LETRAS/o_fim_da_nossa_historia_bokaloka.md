@@ -5,7 +5,7 @@
 O Fim da Nossa História - Bokaloka (Karaokê Profissional) | Com Letra
 ```
 
-## Descrição do Vídeo
+## Descrição do Vídeo (Copiar para o YouTube)
 ```text
 💎 A EMOÇÃO TOMA CONTA! Karaokê com qualidade de estúdio para quem ama o verdadeiro pagode.
 
@@ -44,7 +44,39 @@ Artista: Bokaloka
 Qualidade: Áudio Remasterizado 48kHz
 
 Letra:
+(Insira a letra corrida normal da internet aqui - Não coloque as quebras do editor!)
 
+#Bokaloka #OFimDaNossaHistoria #Pagode #Karaoke #LionsKaraoke
+```
+
+## Comentário Fixado (Copiar para o YouTube)
+```text
+🦁 Dica do Lions:
+
+"Ontem não vivia sem você, hoje não me importo te perder..." 💔 Quem aí já cantou essa sofrendo com os amigos no pagode? Deixa aquele like para apoiar o canal!
+
+🚀 CANSADO DE ESPERAR NA FILA DE PEDIDOS?
+Por apenas R$ 15,00, eu produzo o seu karaokê personalizado com prioridade máxima e qualidade de estúdio!
+
+🎁 BÔNUS EXCLUSIVO: Ganhe uma PLAYLIST COM SEU NOME aqui no canal contendo todas as suas encomendas.
+
+COMO PEDIR AGORA:
+1 - Faça o PIX de R$ 15,00 (ou R$ 10,00 cada para combo de 5+): layoncosta.digital@gmail.com
+2 - Escreva na mensagem do Pix: MÚSICA + CANTOR + SEU NOME.
+3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.vercel.app
+
+Fácil, rápido e sem fila de espera! 🎤🔥
+```
+
+## Tags / Hashtags (Copiar para o YouTube)
+```text
+#Bokaloka #OFimDaNossaHistoria #Pagode90 #KaraokeLions #KaraokeProfissional #PlaybackComLetra #SambaEPagode
+```
+
+---
+
+## 💻 LETRA SINCRONIZADA (EXCLUSIVO DO EDITOR - NÃO POSTAR NO YOUTUBE)
+```text
 INSCREVA-SE
 ▇▇▇▇▇▇▇▇▇▇
 
@@ -144,30 +176,4 @@ Nossas trocas
 de beijinhos
 nos momentos
 de carinho
-
-#Bokaloka #OFimDaNossaHistoria #Pagode #Karaoke #LionsKaraoke
-```
-
-## Comentário Fixado
-```text
-🦁 Dica do Lions:
-
-"Ontem não vivia sem você, hoje não me importo te perder..." 💔 Quem aí já cantou essa sofrendo com os amigos no pagode? Deixa aquele like para apoiar o canal!
-
-🚀 CANSADO DE ESPERAR NA FILA DE PEDIDOS?
-Por apenas R$ 15,00, eu produzo o seu karaokê personalizado com prioridade máxima e qualidade de estúdio!
-
-🎁 BÔNUS EXCLUSIVO: Ganhe uma PLAYLIST COM SEU NOME aqui no canal contendo todas as suas encomendas.
-
-COMO PEDIR AGORA:
-1 - Faça o PIX de R$ 15,00 (ou R$ 10,00 cada para combo de 5+): layoncosta.digital@gmail.com
-2 - Escreva na mensagem do Pix: MÚSICA + CANTOR + SEU NOME.
-3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.vercel.app
-
-Fácil, rápido e sem fila de espera! 🎤🔥
-```
-
-## Tags / Hashtags
-```text
-#Bokaloka #OFimDaNossaHistoria #Pagode90 #KaraokeLions #KaraokeProfissional #PlaybackComLetra #SambaEPagode
 ```

@@ -5,7 +5,7 @@
 Amada Amante - Roberto Carlos (Karaokê Profissional) | Com Letra
 ```
 
-## Descrição do Vídeo
+## Descrição do Vídeo (Copiar para o YouTube)
 ```text
 💎 A EMOÇÃO TOMA CONTA! Karaokê com qualidade de estúdio para os verdadeiros fãs do Rei.
 
@@ -44,7 +44,39 @@ Artista: Roberto Carlos
 Qualidade: Áudio Remasterizado 48kHz
 
 Letra:
+(Insira a letra corrida normal da internet aqui - Não coloque as quebras do editor!)
 
+#RobertoCarlos #AmadaAmante #JovemGuarda #Karaoke #LionsKaraoke
+```
+
+## Comentário Fixado (Copiar para o YouTube)
+```text
+🦁 Dica do Lions:
+
+"Que de tanto amor viveu, que de tanto amor se deu..." 🎶 Marca aí quem é a sua Amada Amante ou o seu Amado Amante nos comentários! Deixa o like para fortalecer o canal!
+
+🚀 CANSADO DE ESPERAR NA FILA DE PEDIDOS?
+Por apenas R$ 15,00, eu produzo a sua música com prioridade máxima (qualidade de estúdio) e você fura a fila!
+
+🎁 BÔNUS: Ganhe uma PLAYLIST COM SEU NOME aqui no canal com suas encomendas.
+
+COMO PEDIR AGORA:
+1 - Faça o PIX de R$ 15,00 (ou R$ 10,00 cada para combo de 5+): layoncosta.digital@gmail.com
+2 - Escreva na mensagem do Pix: MÚSICA + CANTOR + SEU NOME.
+3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.vercel.app
+
+(Dúvidas ou packs grandes? Só me chamar no e-mail!)
+```
+
+## Tags / Hashtags (Copiar para o YouTube)
+```text
+#RobertoCarlos #AmadaAmante #JovemGuarda #Karaoke #LionsKaraoke #KaraokeProfissional #PlaybackComLetra
+```
+
+---
+
+## 💻 LETRA SINCRONIZADA (EXCLUSIVO DO EDITOR - NÃO POSTAR NO YOUTUBE)
+```text
 INSCREVA-SE
 ▇▇▇▇▇▇▇▇▇▇
 
@@ -99,30 +131,4 @@ Amada amante
 Amada amante
 Amada amante
 Amada amante
-
-#RobertoCarlos #AmadaAmante #JovemGuarda #Karaoke #LionsKaraoke
-```
-
-## Comentário Fixado
-```text
-🦁 Dica do Lions:
-
-"Que de tanto amor viveu, que de tanto amor se deu..." 🎶 Marca aí quem é a sua Amada Amante ou o seu Amado Amante nos comentários! Deixa o like para fortalecer o canal!
-
-🚀 CANSADO DE ESPERAR NA FILA DE PEDIDOS?
-Por apenas R$ 15,00, eu produzo a sua música com prioridade máxima (qualidade de estúdio) e você fura a fila!
-
-🎁 BÔNUS: Ganhe uma PLAYLIST COM SEU NOME aqui no canal com suas encomendas.
-
-COMO PEDIR AGORA:
-1 - Faça o PIX de R$ 15,00 (ou R$ 10,00 cada para combo de 5+): layoncosta.digital@gmail.com
-2 - Escreva na mensagem do Pix: MÚSICA + CANTOR + SEU NOME.
-3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.vercel.app
-
-(Dúvidas ou packs grandes? Só me chamar no e-mail!)
-```
-
-## Tags / Hashtags
-```text
-#RobertoCarlos #AmadaAmante #JovemGuarda #Karaoke #LionsKaraoke #KaraokeProfissional #PlaybackComLetra
 ```
