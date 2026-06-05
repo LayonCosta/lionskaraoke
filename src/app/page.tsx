@@ -4,8 +4,10 @@ import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import FeatureVip from "@/components/FeatureVip";
 import AudioShowcase from "@/components/AudioShowcase";
+import VideoShowcase from "@/components/VideoShowcase";
 import InteractiveEstimator from "@/components/InteractiveEstimator";
 import Pricing from "@/components/Pricing";
+import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 
@@ -38,11 +40,17 @@ export default function Home() {
         {/* Before / After Audio Quality Showcase */}
         <AudioShowcase />
 
+        {/* Interactive YouTube Video Showcase */}
+        <VideoShowcase />
+
         {/* Real-time Order Price Calculator */}
         <InteractiveEstimator />
 
         {/* Pricing Cards */}
         <Pricing />
+
+        {/* Customer Testimonials Social Proof */}
+        <Testimonials />
 
         {/* FAQ Accordion Section */}
         <Faq />

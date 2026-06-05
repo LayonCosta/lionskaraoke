@@ -51,6 +51,22 @@ export default function InteractiveEstimator() {
             <h3 className="text-base font-bold text-white">Simulador de Pedido VIP</h3>
           </div>
 
+          {/* Quick Direct Order Alert */}
+          <div className="mb-6 bg-white/5 border border-white/5 p-3.5 rounded-2xl text-xs text-zinc-300 flex items-center justify-between gap-3">
+            <div className="flex flex-col gap-0.5">
+              <span className="font-extrabold text-white">Prefere pedir direto?</span>
+              <p className="text-[10px] text-zinc-400">Pule a simulação e nos envie a lista de músicas pelo WhatsApp.</p>
+            </div>
+            <a
+              href="https://wa.me/5515991908930?text=Ol%C3%A1%20Lions%20Karaok%C3%AA!%20Prefiro%20fazer%20meu%20pedido%20direto%20sem%20simular.%20Como%20fa%C3%A7o?"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2 shrink-0 bg-brand-gold hover:bg-yellow-500 text-black font-extrabold text-[10px] rounded-xl transition cursor-pointer select-none"
+            >
+              Pedir Direto
+            </a>
+          </div>
+
           {/* Slider Controls */}
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2">

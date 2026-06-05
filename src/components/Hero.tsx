@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function Hero() {
   const handleCtaClick = () => {
@@ -19,9 +19,18 @@ export default function Hero() {
 
       <div className="mx-auto max-w-xl text-center flex flex-col items-center gap-6">
         {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3.5 py-1 text-xs text-zinc-300 font-medium">
-          <Sparkles className="h-3.5 w-3.5 text-brand-gold" />
-          <span>Fila de Espera Excedida?</span>
+        <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 pl-1.5 pr-3.5 py-1 text-xs text-zinc-300 font-medium select-none">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/avatar.jpg" 
+            alt="Lions Karaokê Avatar" 
+            className="h-5.5 w-5.5 rounded-full object-cover border border-brand-gold/30" 
+          />
+          <span className="text-zinc-400 font-bold">@lionskaraoke</span>
+          <span className="h-1 w-1 rounded-full bg-zinc-600" />
+          <span className="text-brand-gold font-semibold flex items-center gap-0.5">
+            Canal Oficial
+          </span>
         </div>
 
         {/* Title */}
@@ -39,7 +48,7 @@ export default function Hero() {
         <div className="mt-4 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={handleCtaClick}
-            className="group relative flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-500 py-3.5 px-6 font-bold text-black shadow-lg shadow-brand-gold/25 hover:from-yellow-400 hover:to-brand-gold transition duration-300 cursor-pointer w-full sm:w-auto overflow-hidden border border-brand-gold-light/20 gold-glow-hover"
+            className="shimmer-btn group relative flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-gold to-yellow-500 py-3.5 px-6 font-bold text-black shadow-lg shadow-brand-gold/25 hover:from-yellow-400 hover:to-brand-gold transition duration-300 cursor-pointer w-full sm:w-auto overflow-hidden border border-brand-gold-light/20 gold-glow-hover"
           >
             <span>Pedir Minha Música VIP</span>
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

@@ -10,11 +10,14 @@ export default function Header() {
         {/* Brand Logo & Name */}
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 cursor-pointer select-none"
+          className="flex items-center gap-2.5 cursor-pointer select-none"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-gold to-brand-gold-dark text-black font-bold shadow-md shadow-brand-gold/15">
-            L
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/avatar.jpg" 
+            alt="Lions Karaokê Avatar" 
+            className="h-9 w-9 rounded-full object-cover border border-brand-gold/40 shadow-sm shadow-brand-gold/10" 
+          />
           <span className="font-extrabold tracking-wider text-white text-base">
             LIONS <span className="text-brand-gold font-medium">KARAOKÊ</span>
           </span>
