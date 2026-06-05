@@ -3,7 +3,7 @@
 Este documento serve como diretriz obrigatória e instrução de sistema (prompts futuros) para quando o usuário solicitar a postagem de uma nova música no canal **Lions Karaokê**. 
 
 Sempre que o usuário enviar uma mensagem com o formato ou a intenção de:
-`Música nova: [Nome da Música] - [Nome da Música] + [Letra]`
+`Música nova: [Nome da Música] - [Nome do Cantor] + [Letra]`
 
 O assistente deve **rigorosamente** gerar quatro blocos de conteúdo e salvá-los na pasta `LETRAS/`:
 1. **Título do Vídeo no YouTube (Foco em SEO)**
@@ -24,9 +24,13 @@ O assistente deve **rigorosamente** gerar quatro blocos de conteúdo e salvá-lo
 ---
 
 ## 1. Título do Vídeo (YouTube SEO)
-O título deve ser profissional e otimizado.
-*   **Modelo Padrão:**
-    `[Nome da Música] - [Nome do Cantor] (Karaokê Profissional) | Com Letra`
+O título deve seguir o padrão de máxima relevância para buscas orgânicas de karaokê no YouTube, colocando a intenção de busca e o nome da música logo no início.
+
+*   **Modelo Padrão Obrigatório:**
+    `Karaokê [Nome da Música] - [Nome do Cantor] (Profissional | Com Letra)`
+*   *Exemplos:*
+    - `Karaokê Amada Amante - Roberto Carlos (Profissional | Com Letra)`
+    - `Karaokê O Fim da Nossa História - Bokaloka (Profissional | Com Letra)`
 
 ---
 

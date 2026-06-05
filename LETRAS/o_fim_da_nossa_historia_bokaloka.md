@@ -2,7 +2,7 @@
 
 ## Título
 ```text
-O Fim da Nossa História - Bokaloka (Karaokê Profissional) | Com Letra
+Karaokê O Fim da Nossa História - Bokaloka (Profissional | Com Letra)
 ```
 
 ## Descrição do Vídeo (Copiar para o YouTube)

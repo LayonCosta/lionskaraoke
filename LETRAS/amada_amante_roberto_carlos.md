@@ -2,7 +2,7 @@
 
 ## Título
 ```text
-Amada Amante - Roberto Carlos (Karaokê Profissional) | Com Letra
+Karaokê Amada Amante - Roberto Carlos (Profissional | Com Letra)
 ```
 
 ## Descrição do Vídeo (Copiar para o YouTube)
