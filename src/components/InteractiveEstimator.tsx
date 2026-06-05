@@ -201,9 +201,9 @@ export default function InteractiveEstimator() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="shimmer-btn flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-4 px-6 font-extrabold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition duration-300 text-sm cursor-pointer border border-emerald-400/20"
+            className="shimmer-btn flex w-full items-center justify-center gap-3 rounded-2xl bg-emerald-500 py-4.5 px-8 font-black uppercase tracking-wider text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-xs sm:text-sm cursor-pointer border border-emerald-400/20"
           >
-            <WhatsappIcon className="h-4.5 w-4.5" />
+            <WhatsappIcon className="h-5 w-5 shrink-0" />
             <span>Enviar Pedido via WhatsApp</span>
           </a>
         </div>

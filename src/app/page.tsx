@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import FeatureVip from "@/components/FeatureVip";
-import AudioShowcase from "@/components/AudioShowcase";
 import VideoShowcase from "@/components/VideoShowcase";
 import InteractiveEstimator from "@/components/InteractiveEstimator";
 import Pricing from "@/components/Pricing";
@@ -36,9 +35,6 @@ export default function Home() {
 
         {/* Premium Value Props Grid */}
         <FeatureVip />
-
-        {/* Before / After Audio Quality Showcase */}
-        <AudioShowcase />
 
         {/* Interactive YouTube Video Showcase */}
         <VideoShowcase />

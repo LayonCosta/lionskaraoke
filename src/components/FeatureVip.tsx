@@ -11,7 +11,7 @@ export default function FeatureVip() {
     {
       icon: <Disc className="h-6 w-6 text-brand-purple" />,
       title: "Áudio Masterizado de Estúdio",
-      description: "Isolamento profissional de vocais, equalização premium e ajuste de tom sob medida para a sua voz brilhar em qualquer caixa de som.",
+      description: "Isolamento profissional de vocais, equalização premium e masterização de alta definição para a sua voz brilhar em qualquer caixa de som.",
     },
     {
       icon: <ListMusic className="h-6 w-6 text-emerald-400" />,

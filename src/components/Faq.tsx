@@ -22,10 +22,6 @@ export default function Faq() {
       question: "Como funciona a Playlist no YouTube de bônus?",
       answer: "Ao fechar o Combo VIP, nós criamos e atualizamos uma playlist no canal Lions Karaokê contendo as músicas solicitadas com o título personalizado (Ex: 'Karaokê VIP do [Seu Nome]'). Assim, você pode tocar as músicas diretamente na TV do seu churrasco.",
     },
-    {
-      question: "Consigo alterar o tom (tom masculino/feminino)?",
-      answer: "Sim! Conseguimos ajustar o tom (pitch shift) da música em semitons (para cima ou para baixo) de acordo com o seu alcance vocal. Basta detalhar essa especificação técnica ao nosso time no WhatsApp.",
-    },
   ];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

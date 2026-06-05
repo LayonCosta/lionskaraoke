@@ -139,7 +139,7 @@ export default function VideoShowcase() {
           <span className="text-[10px] font-extrabold uppercase text-zinc-500 tracking-wider px-1">
             Selecione para reproduzir:
           </span>
-          <div className="grid grid-cols-1 gap-2 max-h-[220px] overflow-y-auto pr-1">
+          <div className="grid grid-cols-1 gap-1.5">
             {videos.map((vid) => {
               const isActive = activeVideo.id === vid.id;
               return (

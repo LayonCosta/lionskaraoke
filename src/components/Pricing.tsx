@@ -66,7 +66,7 @@ export default function Pricing() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-brand-gold shrink-0" />
-                  <span>Ajuste de tom personalizado</span>
+                  <span>Masterização profissional de áudio</span>
                 </li>
                 <li className="flex items-center gap-2 opacity-50">
                   <Check className="h-4 w-4 text-brand-gold shrink-0" />
