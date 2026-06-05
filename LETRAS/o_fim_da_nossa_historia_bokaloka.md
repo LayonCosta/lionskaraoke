@@ -79,6 +79,9 @@ Fácil, rápido e sem fila de espera! 🎤🔥
 ```text
 INSCREVA-SE
 ▇▇▇▇▇▇▇▇▇▇
+QUER SUA MÚSICA NO CANAL?
+PEÇA PELO QR CODE DA TELA
+▇▇▇▇▇▇▇▇▇▇
 
 NÃO SEI MAIS 
 SE EU TE QUERO

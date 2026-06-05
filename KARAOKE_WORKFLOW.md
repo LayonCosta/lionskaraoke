@@ -92,7 +92,18 @@ Focado em gerar curtidas, engajamento com alguma frase marcante e conversão VIP
 ## 4. Letra Sincronizada para o Vídeo (Para copiar para o Editor)
 Esta seção fica no arquivo `.md` e serve para o editor copiar e colar no programa de vídeo.
 *   **Obrigatório:** Todas as letras desta seção devem ser em **LETRAS MAIÚSCULAS** (UPPERCASE) para melhor legibilidade na tela da TV/Celular.
-*   Deve começar sempre com `INSCREVA-SE`.
-*   Abaixo, colocar a contagem/pausa longa: `▇▇▇▇▇▇▇▇▇▇`.
+*   **Introdução Obrigatória (CTA de Vendas):** O vídeo deve sempre começar com a seguinte estrutura de introdução para prender a atenção do usuário antes da música começar:
+    ```text
+    INSCREVA-SE
+    ▇▇▇▇▇▇▇▇▇▇
+    QUER SUA MÚSICA NO CANAL?
+    PEÇA PELO QR CODE DA TELA
+    ▇▇▇▇▇▇▇▇▇▇
+    ```
 *   Linhas curtas separadas pelo tempo do cantor.
-*   Pausas longas no meio marcadas com `▇▇▇▇▇▇▇▇▇▇`.
+*   Pausas longas no meio (solos instrumentais) marcadas com banners semelhantes, ex:
+    ```text
+    ▇▇▇▇▇
+    FAÇA PEDIDOS
+    NO QR CODE
+    ```
