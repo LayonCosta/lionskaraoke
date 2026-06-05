@@ -80,55 +80,55 @@ COMO PEDIR AGORA:
 INSCREVA-SE
 ▇▇▇▇▇▇▇▇▇▇
 
-Esse amor demais antigo
-Amor demais amigo
-Que de tanto amor viveu
+ESSE AMOR DEMAIS ANTIGO
+AMOR DEMAIS AMIGO
+QUE DE TANTO AMOR VIVEU
 
-Que manteve acesa a chama
-Da verdade de quem ama
-Antes e depois do amor
+QUE MANTEVE ACESA A CHAMA
+DA VERDADE DE QUEM AMA
+ANTES E DEPOIS DO AMOR
 
-E você amada amante
-Faz da vida um instante
-Ser demais para nós dois
+E VOCÊ AMADA AMANTE
+FAZ DA VIDA UM INSTANTE
+SER DEMAIS PARA NÓS DOIS
 
-Esse amor sem preconceito
-Sem saber o que é direito
-Faz a suas próprias leis
+ESSE AMOR SEM PRECONCEITO
+SEM SABER O QUE É DIREITO
+FAZ A SUAS PRÓPRIAS LEIS
 
-Que flutua no meu leito
-Que explode no meu peito
-E supera o que já fez
+QUE FLUTUA NO MEU LEITO
+QUE EXPLODE NO MEU PEITO
+E SUPERA O QUE JÁ FEZ
 
-Neste mundo desamante
-Só você amada amante
-Faz o mundo de nós dois
+NESTE MUNDO DESAMANTE
+SÓ VOCÊ AMADA AMANTE
+FAZ O MUNDO DE NÓS DOIS
 
-Amada amante
-Amada amante
-Amada amante
-Amada amante
+AMADA AMANTE
+AMADA AMANTE
+AMADA AMANTE
+AMADA AMANTE
 
 ▇▇▇▇▇▇▇▇▇▇
 
-E você amada amante
-Faz da vida um instante
-Ser demais para nós dois
+E VOCÊ AMADA AMANTE
+FAZ DA VIDA UM INSTANTE
+SER DEMAIS PARA NÓS DOIS
 
-Esse amor sem preconceito
-Sem saber o que é direito
-Faz a suas próprias leis
+ESSE AMOR SEM PRECONCEITO
+SEM SABER O QUE É DIREITO
+FAZ A SUAS PRÓPRIAS LEIS
 
-Que flutua no meu leito
-Que explode no meu peito
-E supera o que já fez
+QUE FLUTUA NO MEU LEITO
+QUE EXPLODE NO MEU PEITO
+E SUPERA O QUE JÁ FEZ
 
-Neste mundo desamante
-Só você amada amante
-Faz o mundo de nós dois
+NESTE MUNDO DESAMANTE
+SÓ VOCÊ AMADA AMANTE
+FAZ O MUNDO DE NÓS DOIS
 
-Amada amante
-Amada amante
-Amada amante
-Amada amante
+AMADA AMANTE
+AMADA AMANTE
+AMADA AMANTE
+AMADA AMANTE
 ```

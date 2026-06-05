@@ -80,100 +80,100 @@ Fácil, rápido e sem fila de espera! 🎤🔥
 INSCREVA-SE
 ▇▇▇▇▇▇▇▇▇▇
 
-Não sei mais
-se eu te quero
-Essa paixão me pegou
-de um jeito
+NÃO SEI MAIS
+SE EU TE QUERO
+ESSA PAIXÃO ME PEGOU
+DE UM JEITO
 
-Que quando a gente
-se apaixona
-Tudo é perfeito
-não há defeitos
+QUE QUANDO A GENTE
+SE APAIXONA
+TUDO É PERFEITO
+NÃO HÁ DEFEITOS
 
-Achei que ninguém mais
-nada mais
-Ia tirar você de dentro
-do meu peito
+ACHEI QUE NINGUÉM MAIS
+NADA MAIS
+IA TIRAR VOCÊ DE DENTRO
+DO MEU PEITO
 
-Mas de repente
-tudo se modificou
+MAS DE REPENTE
+TUDO SE MODIFICOU
 
-Você já não é mais
-aquele grande amor
+VOCÊ JÁ NÃO É MAIS
+AQUELE GRANDE AMOR
 
-Melhor é resolver
-pra gente não sofrer
+MELHOR É RESOLVER
+PRA GENTE NÃO SOFRER
 
-Ontem não vivia
-sem você
-Hoje não me importo
-te perder
+ONTEM NÃO VIVIA
+SEM VOCÊ
+HOJE NÃO ME IMPORTO
+TE PERDER
 
-Acabou
-chegou ao fim
-a nossa história
+ACABOU
+CHEGOU AO FIM
+A NOSSA HISTÓRIA
 
-Acabou
-vai ficar guardada
-na memória
+ACABOU
+VAI FICAR GUARDADA
+NA MEMÓRIA
 
-Nossas trocas
-de beijinhos
-nos momentos
-de carinho
+NOSSAS TROCAS
+DE BEIJINHOS
+NOS MOMENTOS
+DE CARINHO
 
-Acabou
-chegou ao fim
-a nossa história
+ACABOU
+CHEGOU AO FIM
+A NOSSA HISTÓRIA
 
-Acabou
-vai ficar guardada
-na memória
+ACABOU
+VAI FICAR GUARDADA
+NA MEMÓRIA
 
-Nossas trocas
-de beijinhos
-nos momentos
-de carinho
+NOSSAS TROCAS
+DE BEIJINHOS
+NOS MOMENTOS
+DE CARINHO
 
 ▇▇▇▇▇▇▇▇▇▇
 
-Mas de repente
-tudo se modificou
+MAS DE REPENTE
+TUDO SE MODIFICOU
 
-Você já não é mais
-aquele grande amor
+VOCÊ JÁ NÃO É MAIS
+AQUELE GRANDE AMOR
 
-Melhor é resolver
-pra gente não sofrer
+MELHOR É RESOLVER
+PRA GENTE NÃO SOFRER
 
-Ontem não vivia
-sem você
-Hoje não me importo
-te perder
+ONTEM NÃO VIVIA
+SEM VOCÊ
+HOJE NÃO ME IMPORTO
+TE PERDER
 
-Acabou
-chegou ao fim
-a nossa história
+ACABOU
+CHEGOU AO FIM
+A NOSSA HISTÓRIA
 
-Acabou
-vai ficar guardada
-na memória
+ACABOU
+VAI FICAR GUARDADA
+NA MEMÓRIA
 
-Nossas trocas
-de beijinhos
-nos momentos
-de carinho
+NOSSAS TROCAS
+DE BEIJINHOS
+NOS MOMENTOS
+DE CARINHO
 
-Acabou
-chegou ao fim
-a nossa história
+ACABOU
+CHEGOU AO FIM
+A NOSSA HISTÓRIA
 
-Acabou
-vai ficar guardada
-na memória
+ACABOU
+VAI FICAR GUARDADA
+NA MEMÓRIA
 
-Nossas trocas
-de beijinhos
-nos momentos
-de carinho
+NOSSAS TROCAS
+DE BEIJINHOS
+NOS MOMENTOS
+DE CARINHO
 ```
