@@ -68,9 +68,9 @@ COMO PEDIR AGORA:
 Fácil, rápido e sem fila de espera! 🎤🔥
 ```
 
-## Tags / Hashtags (Copiar para o YouTube)
+## Tags (Copiar para as Tags do YouTube Studio)
 ```text
-#Bokaloka #OFimDaNossaHistoria #Pagode90 #KaraokeLions #KaraokeProfissional #PlaybackComLetra #SambaEPagode
+Bokaloka, O Fim da Nossa História, Pagode 90, Karaoke Lions, Karaoke Profissional, Playback Com Letra, Samba E Pagode, Karaokê, Instrumental, Playback
 ```
 
 ---

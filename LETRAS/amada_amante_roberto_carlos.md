@@ -68,9 +68,9 @@ COMO PEDIR AGORA:
 (Dúvidas ou packs grandes? Só me chamar no e-mail!)
 ```
 
-## Tags / Hashtags (Copiar para o YouTube)
+## Tags (Copiar para as Tags do YouTube Studio)
 ```text
-#RobertoCarlos #AmadaAmante #JovemGuarda #Karaoke #LionsKaraoke #KaraokeProfissional #PlaybackComLetra
+Roberto Carlos, Amada Amante, Jovem Guarda, Karaoke, Lions Karaoke, Karaoke Profissional, Playback Com Letra, MPB, Romântico, Instrumental, Playback
 ```
 
 ---
