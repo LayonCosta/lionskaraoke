@@ -13,7 +13,7 @@ export default function Testimonials() {
     {
       name: "Mariana Silva",
       role: "Fã de MPB / Cantora de Chácara",
-      comment: "Pedi o playback de Benito Di Paula pro aniversário do meu pai. Em menos de 24h o arquivo tava no meu WhatsApp, com o tom certinho pra voz dele. Foi o sucesso da festa!",
+      comment: "Pedi o playback de Benito Di Paula pro aniversário do meu pai. Em menos de 24h o vídeo já tava postado no canal e recebi o link por WhatsApp, com o tom certinho pra voz dele. Foi o sucesso da festa!",
       rating: 5,
     },
     {

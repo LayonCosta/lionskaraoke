@@ -6,7 +6,7 @@ export default function FeatureVip() {
     {
       icon: <Zap className="h-6 w-6 text-brand-gold" />,
       title: "Entrega Expressa em 48h",
-      description: "Esqueça as esperas intermináveis. Pediu o seu playback, nossa equipe foca na sua produção e entrega diretamente no seu WhatsApp em tempo recorde.",
+      description: "Esqueça as esperas intermináveis. Pediu o seu playback, nossa equipe foca na sua produção e publica o vídeo no canal oficial do YouTube em tempo recorde.",
     },
     {
       icon: <Disc className="h-6 w-6 text-brand-purple" />,
@@ -16,7 +16,7 @@ export default function FeatureVip() {
     {
       icon: <ListMusic className="h-6 w-6 text-emerald-400" />,
       title: "Playlist no YouTube Exclusiva",
-      description: "Além do arquivo de áudio premium, criamos uma playlist exclusiva no YouTube com o seu próprio nome para facilitar a execução no seu churrasco.",
+      description: "Ao realizar o seu pedido, organizamos tudo em uma playlist exclusiva no YouTube com o seu próprio nome para facilitar a reprodução direta na TV.",
     },
   ];
 

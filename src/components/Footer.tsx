@@ -8,9 +8,12 @@ export default function Footer() {
       <div className="mx-auto max-w-xl flex flex-col items-center gap-6 text-center">
         {/* Brand */}
         <div className="flex items-center gap-2">
-          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-brand-gold to-brand-gold-dark text-black font-bold text-xs shadow-sm">
-            L
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/avatar.jpg" 
+            alt="Lions Karaokê Avatar" 
+            className="h-7 w-7 rounded-full object-cover border border-brand-gold/30" 
+          />
           <span className="font-extrabold tracking-wider text-zinc-300 text-sm">
             LIONS <span className="text-brand-gold font-medium">KARAOKÊ</span>
           </span>

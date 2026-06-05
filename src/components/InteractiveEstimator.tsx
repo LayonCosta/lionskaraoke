@@ -1,7 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { MessageSquare, Calculator, Flame } from "lucide-react";
+import { Calculator, Flame } from "lucide-react";
+
+const WhatsappIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.216 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+);
 
 export default function InteractiveEstimator() {
   const [songCount, setSongCount] = useState(1);
@@ -19,7 +30,7 @@ export default function InteractiveEstimator() {
   const whatsappNumber = "5515991908930"; 
   const messageText = `Olá Lions Karaokê! Quero solicitar o pedido VIP Express de ${songCount} ${
     songCount === 1 ? "música" : "músicas"
-  } remasterizada(s).`;
+  } para o canal.`;
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
 
   const copyToClipboard = (text: string, type: string) => {
@@ -53,15 +64,15 @@ export default function InteractiveEstimator() {
 
           {/* Quick Direct Order Alert */}
           <div className="mb-6 bg-white/5 border border-white/5 p-3.5 rounded-2xl text-xs text-zinc-300 flex items-center justify-between gap-3">
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-0.5 min-w-0">
               <span className="font-extrabold text-white">Prefere pedir direto?</span>
-              <p className="text-[10px] text-zinc-400">Pule a simulação e nos envie a lista de músicas pelo WhatsApp.</p>
+              <p className="text-[10px] text-zinc-400 truncate">Pule a simulação e peça pelo WhatsApp.</p>
             </div>
             <a
               href="https://wa.me/5515991908930?text=Ol%C3%A1%20Lions%20Karaok%C3%AA!%20Prefiro%20fazer%20meu%20pedido%20direto%20sem%20simular.%20Como%20fa%C3%A7o?"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-2 shrink-0 bg-brand-gold hover:bg-yellow-500 text-black font-extrabold text-[10px] rounded-xl transition cursor-pointer select-none"
+              className="shimmer-btn px-4 py-2 shrink-0 bg-brand-gold hover:bg-yellow-500 text-black font-extrabold text-[10px] rounded-xl transition cursor-pointer select-none"
             >
               Pedir Direto
             </a>
@@ -141,29 +152,29 @@ export default function InteractiveEstimator() {
             <span className="text-[10px] uppercase tracking-wider font-extrabold text-zinc-500">Forma de Pagamento (PIX):</span>
             
             <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/5">
-                <div className="flex flex-col">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-black/40 p-3 rounded-xl border border-white/5">
+                <div className="flex flex-col min-w-0">
                   <span className="text-[9px] text-zinc-500 font-extrabold uppercase">PIX (E-mail)</span>
-                  <span className="font-mono text-zinc-200 text-xs mt-0.5">layoncosta.digital@gmail.com</span>
+                  <span className="font-mono text-zinc-200 text-xs mt-0.5 break-all select-all">layoncosta.digital@gmail.com</span>
                 </div>
                 <button
                   onClick={() => copyToClipboard("layoncosta.digital@gmail.com", "email")}
-                  className="px-2.5 py-1.5 rounded-lg bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold border border-brand-gold/20 font-bold text-[10px] cursor-pointer transition select-none"
+                  className="w-full sm:w-auto px-3.5 py-2 shrink-0 rounded-lg bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold border border-brand-gold/20 font-bold text-[10px] cursor-pointer transition select-none text-center"
                 >
-                  {copiedText === "email" ? "Copiado!" : "Copiar"}
+                  {copiedText === "email" ? "Copiado!" : "Copiar Chave"}
                 </button>
               </div>
 
-              <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/5">
-                <div className="flex flex-col">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-black/40 p-3 rounded-xl border border-white/5">
+                <div className="flex flex-col min-w-0">
                   <span className="text-[9px] text-zinc-500 font-extrabold uppercase">PIX (Celular)</span>
-                  <span className="font-mono text-zinc-200 text-xs mt-0.5">15991908930</span>
+                  <span className="font-mono text-zinc-200 text-xs mt-0.5 break-all select-all">15991908930</span>
                 </div>
                 <button
                   onClick={() => copyToClipboard("15991908930", "phone")}
-                  className="px-2.5 py-1.5 rounded-lg bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold border border-brand-gold/20 font-bold text-[10px] cursor-pointer transition select-none"
+                  className="w-full sm:w-auto px-3.5 py-2 shrink-0 rounded-lg bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold border border-brand-gold/20 font-bold text-[10px] cursor-pointer transition select-none text-center"
                 >
-                  {copiedText === "phone" ? "Copiado!" : "Copiar"}
+                  {copiedText === "phone" ? "Copiado!" : "Copiar Chave"}
                 </button>
               </div>
             </div>
@@ -190,10 +201,10 @@ export default function InteractiveEstimator() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-4 px-6 font-extrabold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition duration-300 text-sm cursor-pointer border border-emerald-400/20"
+            className="shimmer-btn flex w-full items-center justify-center gap-2 rounded-2xl bg-emerald-500 py-4 px-6 font-extrabold text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition duration-300 text-sm cursor-pointer border border-emerald-400/20"
           >
-            <MessageSquare className="h-4 w-4 fill-white text-white" />
-            <span>Fazer Pedido de {songCount} {songCount === 1 ? "Música" : "Músicas"} via WhatsApp</span>
+            <WhatsappIcon className="h-4.5 w-4.5" />
+            <span>Enviar Pedido via WhatsApp</span>
           </a>
         </div>
       </div>

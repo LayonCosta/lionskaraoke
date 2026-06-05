@@ -12,7 +12,7 @@ export default function Faq() {
   const faqs: FaqItem[] = [
     {
       question: "Como recebo minhas músicas?",
-      answer: "Você recebe o arquivo de áudio masterizado direto no seu WhatsApp ou e-mail em formato de alta qualidade (.WAV ou .MP3), pronto para ser executado em qualquer celular, computador ou caixa de som.",
+      answer: "O seu playback personalizado será produzido e postado diretamente no canal do YouTube do Lions Karaokê. Assim que o vídeo estiver no ar, nós enviamos o link de acesso direto no seu WhatsApp para você cantar na sua TV!",
     },
     {
       question: "Qual o prazo exato de entrega?",
