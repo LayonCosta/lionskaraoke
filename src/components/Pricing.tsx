@@ -13,7 +13,7 @@ const WhatsappIcon = ({ className }: { className?: string }) => (
 );
 
 export default function Pricing() {
-  const whatsappNumber = "5515991908930"; // Real phone number
+  const whatsappNumber = "5511950749119"; // Real phone number
   
   const getWhatsappUrl = (packName: string) => {
     const message = `Olá Lions Karaokê! Gostaria de saber mais e solicitar o ${packName} VIP Express.`;

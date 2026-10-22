@@ -27,7 +27,7 @@ export default function InteractiveEstimator() {
   const savings = standardPrice - totalPrice;
 
   // Real details
-  const whatsappNumber = "5515991908930"; 
+  const whatsappNumber = "5511950749119"; 
   const messageText = `Olá Lions Karaokê! Quero solicitar o pedido VIP Express de ${songCount} ${
     songCount === 1 ? "música" : "músicas"
   } para o canal.`;
@@ -69,7 +69,7 @@ export default function InteractiveEstimator() {
               <p className="text-[10px] text-zinc-400 truncate">Pule a simulação e peça pelo WhatsApp.</p>
             </div>
             <a
-              href="https://wa.me/5515991908930?text=Ol%C3%A1%20Lions%20Karaok%C3%AA!%20Prefiro%20fazer%20meu%20pedido%20direto%20sem%20simular.%20Como%20fa%C3%A7o?"
+              href="https://wa.me/5511950749119?text=Ol%C3%A1%20Lions%20Karaok%C3%AA!%20Prefiro%20fazer%20meu%20pedido%20direto%20sem%20simular.%20Como%20fa%C3%A7o?"
               target="_blank"
               rel="noopener noreferrer"
               className="shimmer-btn px-4 py-2 shrink-0 bg-brand-gold hover:bg-yellow-500 text-black font-extrabold text-[10px] rounded-xl transition cursor-pointer select-none"

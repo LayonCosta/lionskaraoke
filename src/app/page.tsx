@@ -1,59 +1,41 @@
-import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import SocialProof from "@/components/SocialProof";
-import FeatureVip from "@/components/FeatureVip";
-import VideoShowcase from "@/components/VideoShowcase";
-import InteractiveEstimator from "@/components/InteractiveEstimator";
-import Pricing from "@/components/Pricing";
-import Testimonials from "@/components/Testimonials";
-import Faq from "@/components/Faq";
-import Footer from "@/components/Footer";
-
-export const metadata: Metadata = {
-  title: "Lions Karaokê | Playbacks VIP Express",
-  description: "Cante sua música sem esperar na fila! Produção e remasterização de playbacks premium em até 48 horas.",
-  openGraph: {
-    title: "Lions Karaokê | Playbacks VIP Express",
-    description: "Cante sua música favorita sem esperar na fila de pedidos da festa! Remasterização premium em até 48 horas.",
-    type: "website",
-  },
-};
+import StickyBanner from "@/components/StickyBanner";
+import AppHeader from "@/components/AppHeader";
+import OrderAppCard from "@/components/OrderAppCard";
+import RecentReleases from "@/components/RecentReleases";
+import HowItWorks from "@/components/HowItWorks";
+import QuickFaq from "@/components/QuickFaq";
+import AppFooter from "@/components/AppFooter";
+import AppBottomNav from "@/components/AppBottomNav";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-[#050506] font-sans antialiased text-zinc-100">
-      {/* Sticky Header */}
-      <Header />
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+      {/* 1. Sticky Top Banner (Google Stick / PUB / Destaque Oficial) */}
+      <StickyBanner />
 
-      <main className="flex-1 flex flex-col">
-        {/* Hero Hook Section */}
-        <Hero />
+      {/* 2. App Header com Logo e Status da Produção */}
+      <AppHeader />
 
-        {/* Real YouTube Channel Stats Bar */}
-        <SocialProof />
+      {/* 3. Main Container (Estilo Aplicativo Mobile-First) */}
+      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-6 sm:py-8 flex flex-col items-center">
+        {/* Card Principal de Pedidos (O coração do site) */}
+        <OrderAppCard />
 
-        {/* Premium Value Props Grid */}
-        <FeatureVip />
+        {/* Últimos Lançamentos Entregues no Canal */}
+        <RecentReleases />
 
-        {/* Interactive YouTube Video Showcase */}
-        <VideoShowcase />
+        {/* Como Funciona em 3 Passos */}
+        <HowItWorks />
 
-        {/* Real-time Order Price Calculator */}
-        <InteractiveEstimator />
-
-        {/* Pricing Cards */}
-        <Pricing />
-
-        {/* Customer Testimonials Social Proof */}
-        <Testimonials />
-
-        {/* FAQ Accordion Section */}
-        <Faq />
+        {/* Dúvidas Frequentes */}
+        <QuickFaq />
       </main>
 
-      {/* Footer & Disclaimers */}
-      <Footer />
+      {/* 4. Rodapé Limpo */}
+      <AppFooter />
+
+      {/* 5. Barra Inferior Fixa de Navegação do App (Mobile) */}
+      <AppBottomNav />
     </div>
   );
 }

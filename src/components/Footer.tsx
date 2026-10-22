@@ -48,7 +48,7 @@ export default function Footer() {
         {/* Real Contact Info */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-y-2 sm:gap-x-6 text-[11px] text-zinc-400 bg-white/5 border border-white/5 px-5 py-3 rounded-2xl w-full max-w-[280px] sm:max-w-none">
           <span>Telegram: <a href="https://t.me/layoncosta" target="_blank" rel="noopener noreferrer" className="text-brand-gold font-bold hover:underline">@layoncosta</a></span>
-          <span>WhatsApp: <a href="https://wa.me/5515991908930" target="_blank" rel="noopener noreferrer" className="text-brand-gold font-bold hover:underline">(15) 99190-8930</a></span>
+          <span>WhatsApp: <a href="https://wa.me/5511950749119" target="_blank" rel="noopener noreferrer" className="text-brand-gold font-bold hover:underline">(11) 95074-9119</a></span>
           <span>E-mail: <a href="mailto:layoncosta.digital@gmail.com" className="text-brand-gold font-bold hover:underline">layoncosta.digital@gmail.com</a></span>
         </div>
 

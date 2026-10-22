@@ -1,20 +1,28 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Lions Karaokê | Playbacks Remasterizados e VIP Express",
-  description: "Peça seu playback personalizado com entrega rápida e qualidade profissional de estúdio.",
+  title: "Lions Karaokê | Pedidos VIP Express",
+  description: "Peça seu karaokê personalizado sem esperar na fila! Produção e remasterização profissional em até 48 horas.",
+  openGraph: {
+    title: "Lions Karaokê | Pedidos VIP Express",
+    description: "Peça sua música favorita com letra sincronizada em 4K e playback profissional.",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -23,11 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="pt-BR" className={`${plusJakartaSans.variable} h-full antialiased`}>
+      <body className="min-h-full bg-slate-50 text-slate-900 font-sans flex flex-col selection:bg-amber-100 selection:text-amber-900 pb-16 md:pb-0">
+        {children}
+      </body>
     </html>
   );
 }

@@ -5,11 +5,12 @@ Este documento serve como diretriz obrigatória e instrução de sistema (prompt
 Sempre que o usuário enviar uma mensagem com o formato ou a intenção de:
 `Música nova: [Nome da Música] - [Nome do Cantor] + [Letra]`
 
-O assistente deve **rigorosamente** gerar quatro blocos de conteúdo e salvá-los na pasta `LETRAS/`:
+O assistente deve **rigorosamente** gerar cinco blocos de conteúdo e salvá-los na pasta `LETRAS/`:
 1. **Título do Vídeo no YouTube (Foco em SEO)**
 2. **Descrição do Vídeo no YouTube (Sem a letra sincronizada - apenas placeholder para letra corrida)**
 3. **Comentário Fixado (CTA Estratégico)**
 4. **Letra Sincronizada para o Vídeo (Para uso exclusivo do editor de vídeo)**
+5. **Versão YouTube Shorts (Trecho curto vertical de até 60 segundos para divulgação)**
 
 ---
 
@@ -66,8 +67,9 @@ Envie o comprovante e o nome da música por e-mail ou na mensagem do Pix.
 ▇▇▇▇▇▇▇▇▇▇
 
 🔹 APOIE O CANAL
-Este projeto é independente e vive 100% do seu apoio! Qualquer valor ajuda a manter o canal ativo.
-Chave PIX: layoncosta.digital@gmail.com
+Este canal não recebe monetização do YouTube devido aos direitos autorais das músicas (reivindicações automáticas). 
+Se este karaokê animou a sua festa, o seu churrasco ou o seu dia, nos ajude a manter o projeto ativo com qualquer valor via PIX!
+🔑 CHAVE PIX: layoncosta.digital@gmail.com
 
 ▇▇▇▇▇▇▇▇▇▇
 
@@ -107,3 +109,52 @@ Esta seção fica no arquivo `.md` e serve para o editor copiar e colar no progr
     FAÇA PEDIDOS
     NO QR CODE
     ```
+*   **Tela Final Obrigatória (30 Segundos - Doações/Pix):** O final de todo arquivo de letra sincronizada deve conter um bloco de instrução para a tela final de 30 segundos, incentivando o público a escanear o QR Code de doação Pix e se inscrever no canal enquanto as sugestões de vídeos e playlists do YouTube carregam:
+    ```text
+    ▇▇▇▇▇▇▇▇▇▇
+    TELA FINAL (30 SEGUNDOS)
+    
+    OBRIGADO POR CANTAR COM O LIONS! 🦁🎤
+    
+    COMO ESSE VÍDEO NÃO É MONETIZADO
+    PELOS DIREITOS AUTORAIS DA MÚSICA,
+    MANTEMOS O CANAL COM O SEU APOIO.
+    
+    SE O KARAOKÊ ALEGROU SUA FESTA
+    OU O SEU CHURRASCO, AJUDE VIA PIX!
+    
+    CHAVE PIX / QR CODE NA TELA
+    layoncosta.digital@gmail.com
+    
+    MUITO OBRIGADO! 🙏
+    ▇▇▇▇▇▇▇▇▇▇
+    ```
+
+---
+
+## 5. Versão YouTube Shorts (Divulgação Vertical de até 60s)
+Esta seção serve para criar um vídeo curto em formato vertical (9:16) focando no refrão principal da música para atrair tráfego para o vídeo de karaokê completo no canal.
+
+### Título do Short:
+`[Nome da Música] - [Nome do Cantor] (Karaokê) #shorts #karaoke #[Estilo/Gênero] #lionskaraoke`
+
+### Descrição do Short:
+```text
+Quer cantar a música completa? Clique no link abaixo!
+👉 Assista ao Karaokê Completo aqui: [LINK_DO_VIDEO_LONG_FORM]
+
+#lionskaraoke #karaoke #[Cantor] #[NomeDaMusica]
+```
+
+### Comentário Fixado do Short (CTA):
+```text
+🎤 QUER CANTAR A MÚSICA COMPLETA?
+👉 Assista ao vídeo completo aqui: [LINK_DO_VIDEO_LONG_FORM]
+
+Se curtiu, se inscreve no canal e deixe seu like! 🦁🔥
+```
+
+### Letra Sincronizada para o Short (Apenas o Refrão):
+A letra sincronizada deve conter apenas a estrofe/refrão principal da música que será usada no Short de até 60 segundos, toda em **LETRAS MAIÚSCULAS**.
+
+

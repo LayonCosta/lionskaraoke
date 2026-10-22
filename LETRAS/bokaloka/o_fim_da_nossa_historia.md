@@ -30,11 +30,10 @@ Envie o comprovante e o nome da música por e-mail ou na mensagem do Pix.
 
 🔑 CHAVE PIX / E-MAIL: layoncosta.digital@gmail.com
 
-▇▇▇▇▇▇▇▇▇▇
-
 🔹 APOIE O CANAL
-Este projeto é independente e vive 100% do seu apoio! Qualquer valor ajuda a manter o canal ativo.
-Chave PIX: layoncosta.digital@gmail.com
+Este canal não recebe monetização do YouTube devido aos direitos autorais das músicas (reivindicações automáticas). 
+Se este karaokê animou a sua festa, o seu churrasco ou o seu dia, nos ajude a manter o projeto ativo com qualquer valor via PIX!
+🔑 CHAVE PIX: layoncosta.digital@gmail.com
 
 ▇▇▇▇▇▇▇▇▇▇
 
@@ -186,4 +185,22 @@ NOS MOMENTOS DE CARINHO
 NOSSAS TROCAS DE BEIJINHOS
 NOS MOMENTOS DE CARINHO
 ACABOU.
+
+▇▇▇▇▇▇▇▇▇▇
+TELA FINAL (30 SEGUNDOS)
+
+OBRIGADO POR CANTAR COM O LIONS! 🦁🎤
+
+COMO ESSE VÍDEO NÃO É MONETIZADO
+PELOS DIREITOS AUTORAIS DA MÚSICA,
+MANTEMOS O CANAL COM O SEU APOIO.
+
+SE O KARAOKÊ ALEGROU SUA FESTA
+OU O SEU CHURRASCO, AJUDE VIA PIX!
+
+CHAVE PIX / QR CODE NA TELA
+layoncosta.digital@gmail.com
+
+MUITO OBRIGADO! 🙏
+▇▇▇▇▇▇▇▇▇▇
 ```
