@@ -16,7 +16,7 @@ Karaokê Amada Amante - Roberto Carlos (Profissional | Com Letra)
 🔹 QUER SUA MÚSICA AQUI? (SEJA VIP)
 Não espere meses na fila de pedidos grátis.
 Encomende sua música agora pelo nosso site e receba em até 48h!
-👉 Peça pelo Site: https://lionskaraoke.vercel.app
+👉 Peça pelo Site: https://lionskaraoke.com.br
 
 ✅ Playback Exclusivo
 ✅ Prioridade Máxima (Fura-Fila)
@@ -62,7 +62,7 @@ Por apenas R$ 15,00, eu produzo a sua música com prioridade máxima (qualidade 
 COMO PEDIR AGORA:
 1 - Faça o PIX de R$ 15,00 (ou R$ 10,00 cada para combo de 5+): layoncosta.digital@gmail.com
 2 - Escreva na mensagem do Pix: MÚSICA + CANTOR + SEU NOME.
-3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.vercel.app
+3 - Ou peça diretamente pelo nosso site: https://lionskaraoke.com.br
 
 (Dúvidas ou packs grandes? Só me chamar no e-mail!)
 ```

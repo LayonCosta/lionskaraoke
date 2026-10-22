@@ -50,7 +50,7 @@ O título deve seguir o padrão de máxima relevância para buscas orgânicas de
 🔹 QUER SUA MÚSICA AQUI? (SEJA VIP)
 Não espere meses na fila de pedidos grátis.
 Encomende sua música agora pelo nosso site e receba em até 48h!
-👉 Peça pelo Site: https://lionskaraoke.vercel.app
+👉 Peça pelo Site: https://lionskaraoke.com.br
 
 ✅ Playback Exclusivo
 ✅ Prioridade Máxima (Fura-Fila)
