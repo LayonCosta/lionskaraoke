@@ -62,6 +62,7 @@ export default function RecentReleases() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const playerRef = useRef<HTMLDivElement | null>(null);
 
   // Envia comando para a API do YouTube iframe via postMessage
   const sendPlayerCommand = (func: string, args: unknown[] = []) => {
@@ -121,6 +122,9 @@ export default function RecentReleases() {
     setActiveVideo(video);
     setHasStarted(true);
     setIsPlaying(true);
+    if (playerRef.current) {
+      playerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   // Sincroniza estado de reprodução recebido do YouTube
@@ -175,25 +179,30 @@ export default function RecentReleases() {
       </div>
 
       {/* Card do Player Principal */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-md p-3 sm:p-4 mb-4 overflow-hidden">
+      <div
+        ref={playerRef}
+        className="scroll-mt-14 bg-white rounded-lg border border-slate-200 shadow-md p-3 sm:p-4 mb-4 overflow-hidden"
+      >
+        {/* Barra de Selos de Qualidade VIP (100% fora do player para não cobrir a letra do karaokê) */}
+        <div className="flex items-center justify-between gap-2 mb-2.5 px-0.5">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="text-xs font-black tracking-tight text-slate-900">
+              Lions Karaokê
+            </span>
+            <span className="text-[10px] font-bold text-amber-800 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded">
+              Smart TV 4K
+            </span>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded whitespace-nowrap">
+            Áudio Tratado
+          </span>
+        </div>
+
         {/* Janela de Vídeo 16:9 */}
         <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-slate-950 shadow-inner border border-slate-200">
           {hasStarted ? (
             <>
-              {/* Tarja Superior Blindada (Cobre o título e links do YouTube) */}
-              <div className="absolute top-0 inset-x-0 h-9 bg-gradient-to-b from-black/90 via-black/60 to-transparent z-20 flex items-center justify-between px-3 text-white pointer-events-auto select-none">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[11px] font-black tracking-wide text-amber-400">
-                    LIONS KARAOKÊ
-                  </span>
-                  <span className="text-[10px] text-slate-300 font-semibold">• 4K SMART TV</span>
-                </div>
-                <span className="text-[9px] font-bold uppercase tracking-wider bg-black/60 px-2 py-0.5 rounded border border-white/20 text-white">
-                  Áudio tratado
-                </span>
-              </div>
-
               {/* YouTube IFrame com controles nativos ocultos */}
               <iframe
                 ref={iframeRef}
