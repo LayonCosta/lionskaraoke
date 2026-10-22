@@ -69,27 +69,27 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           </p>
 
           {/* Sugestões Ilustrativas de Apoio (Vitrine de Valores) */}
-          <div className="mb-3">
+          <div className="mb-4">
             <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
               Sugestões de Apoio ao Canal:
             </span>
-            <div className="grid grid-cols-4 gap-2 pt-2">
+            <div className="grid grid-cols-4 gap-2 pt-3">
               {suggestedValues.map((item) => (
                 <div
                   key={item.label}
-                  className={`p-2.5 rounded-2xl text-center relative flex flex-col justify-between min-h-[66px] transition-all select-none ${
+                  className={`rounded-2xl text-center relative flex flex-col justify-center items-center transition-all select-none min-h-[68px] px-1.5 ${
                     item.popular
-                      ? "bg-amber-50 border-2 border-amber-500 ring-2 ring-amber-500/15 shadow-sm pt-3"
-                      : "bg-slate-50/80 border border-slate-200"
+                      ? "bg-amber-50/90 border-2 border-amber-400 shadow-xs pt-3 pb-2"
+                      : "bg-slate-50/80 border border-slate-200 py-2.5"
                   }`}
                 >
-                  {/* Tag Discreta e Elegante com espaço folgado */}
+                  {/* Tag Super Fina, Discreta e com bastante espaço do texto */}
                   {item.popular && (
                     <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[7px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-xs border border-amber-300">
-                      Popular ⭐
+                      Mais Escolhido ⭐
                     </span>
                   )}
-                  <div className={`text-xs font-black ${item.popular ? "text-amber-900" : "text-slate-800"}`}>
+                  <div className={`text-xs font-black leading-tight ${item.popular ? "text-amber-950 mt-1" : "text-slate-800"}`}>
                     {item.label}
                   </div>
                   <div className="text-[9px] text-slate-500 mt-1 leading-tight font-medium">
@@ -98,7 +98,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-slate-400 text-center mt-2.5">
+            <p className="text-[10px] text-slate-400 text-center mt-3">
               Copie a chave abaixo e digite o valor que desejar no app do seu banco.
             </p>
           </div>
