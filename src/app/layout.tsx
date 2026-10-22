@@ -11,6 +11,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Lions Karaokê | Pedidos VIP Express",
   description: "Peça seu karaokê personalizado sem esperar na fila! Produção e remasterização profissional em até 48 horas.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Lions Karaokê | Pedidos VIP Express",
     description: "Peça sua música favorita com letra sincronizada em 4K e playback profissional.",
