@@ -18,7 +18,7 @@ const suggestedValues = [
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [copied, setCopied] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string>("R$ 5,00");
-  const pixKey = "layoncosta.digital@gmail.com";
+  const pixKey = "f17a79b0-60f0-4eec-9e09-0d3fb8c50c02";
 
   if (!isOpen) return null;
 
@@ -98,8 +98,8 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           {/* Caixa da Chave Pix com 1-Click Copy */}
           <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 mb-4">
             <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 mb-1.5">
-              <span>Chave Pix (E-mail):</span>
-              <span className="text-slate-700 font-semibold">Nubank / Qualquer banco</span>
+              <span>Chave Pix (Nubank):</span>
+              <span className="text-slate-700 font-semibold">Pague por qualquer banco</span>
             </div>
 
             <div className="flex items-center gap-2 p-2.5 bg-white rounded-xl border border-slate-200">

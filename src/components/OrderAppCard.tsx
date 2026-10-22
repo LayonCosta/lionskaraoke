@@ -22,7 +22,7 @@ export default function OrderAppCard() {
   const [songCount, setSongCount] = useState(1);
   const [copiedPix, setCopiedPix] = useState(false);
 
-  const pixKey = "layoncosta.digital@gmail.com";
+  const pixKey = "f17a79b0-60f0-4eec-9e09-0d3fb8c50c02";
   const whatsappNumber = "5511950749119";
 
   // Preço progressivo
@@ -228,8 +228,8 @@ export default function OrderAppCard() {
         {/* Chave Pix para Cópia */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-slate-500 font-medium">
-            <span>Chave Pix (E-mail):</span>
-            <span className="text-[11px] text-slate-400">Banco / Nubank / Qualquer banco</span>
+            <span>Chave Pix (Nubank):</span>
+            <span className="text-[11px] text-slate-400">Pague pelo Nubank ou qualquer banco</span>
           </div>
 
           <div className="flex items-center gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
