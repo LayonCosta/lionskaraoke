@@ -83,10 +83,10 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                       : "bg-slate-50/80 border border-slate-200"
                   }`}
                 >
-                  {/* Tag Mais Escolhida */}
+                  {/* Tag Discreta e Elegante */}
                   {item.popular && (
-                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[8px] font-black uppercase px-1.5 py-0.2 rounded-full whitespace-nowrap shadow-xs">
-                      Mais Escolhido ⭐
+                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[7px] font-extrabold uppercase tracking-tight px-1.5 py-0.5 rounded-full whitespace-nowrap shadow-xs border border-amber-300">
+                      Popular ⭐
                     </span>
                   )}
                   <div className={`text-xs font-black ${item.popular ? "text-amber-900 mt-1" : "text-slate-800"}`}>
