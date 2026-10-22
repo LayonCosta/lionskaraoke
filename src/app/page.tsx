@@ -9,32 +9,16 @@ import AppBottomNav from "@/components/AppBottomNav";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
-      {/* 1. Sticky Top Banner (Google Stick / PUB / Destaque Oficial) */}
+    <div className="mx-auto flex min-h-screen w-[calc(100%-4px)] max-w-none flex-col bg-slate-50 text-slate-900 font-sans">
       <StickyBanner />
-
-      {/* 2. App Header com Logo e Status da Produção */}
       <AppHeader />
-
-      {/* 3. Main Container (Estilo Aplicativo Mobile-First) */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-6 sm:py-8 flex flex-col items-center">
-        {/* Card Principal de Pedidos (O coração do site) */}
+      <main className="flex-1 w-full px-0 py-3 sm:py-5 flex flex-col items-stretch gap-1">
         <OrderAppCard />
-
-        {/* Últimos Lançamentos Entregues no Canal */}
         <RecentReleases />
-
-        {/* Como Funciona em 3 Passos */}
         <HowItWorks />
-
-        {/* Dúvidas Frequentes */}
         <QuickFaq />
       </main>
-
-      {/* 4. Rodapé Limpo */}
       <AppFooter />
-
-      {/* 5. Barra Inferior Fixa de Navegação do App (Mobile) */}
       <AppBottomNav />
     </div>
   );

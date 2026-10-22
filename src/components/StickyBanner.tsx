@@ -9,57 +9,49 @@ export default function StickyBanner() {
   const [isDonationOpen, setIsDonationOpen] = useState(false);
 
   if (!isVisible) {
-    return (
-      <DonationModal
-        isOpen={isDonationOpen}
-        onClose={() => setIsDonationOpen(false)}
-      />
-    );
+    return <DonationModal isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />;
   }
 
   return (
     <>
-      <div className="sticky top-0 z-50 w-full bg-slate-950 text-white text-xs py-2 px-3 sm:px-4 shadow-md border-b border-amber-500/30">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
-          {/* Lado Esquerdo: Selo de Apoio + Frase */}
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="inline-flex items-center gap-1 rounded-full bg-rose-500/20 px-2 py-0.5 text-[10px] font-black text-rose-300 border border-rose-500/30 shrink-0">
-              <Heart className="w-3 h-3 fill-rose-500 text-rose-500" />
-              APOIAR
-            </span>
-            <p className="text-slate-200 truncate text-[11px] sm:text-xs font-medium">
+      <div className="sticky top-0 z-50 w-full border-b border-amber-500/30 bg-slate-950 px-2 py-2 text-white shadow-md sm:px-3">
+        <div className="mx-auto flex w-full max-w-5xl items-center gap-2 sm:gap-3">
+          <div className="hidden shrink-0 items-center justify-center rounded-full bg-rose-500/15 p-2 sm:flex">
+            <Heart className="h-4 w-4 fill-rose-400 text-rose-400" aria-hidden="true" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold leading-snug text-slate-100 sm:text-sm">
               Gosta dos nossos karaokês grátis? Ajude o canal com qualquer valor via Pix!
             </p>
           </div>
+          <div className="flex shrink-0 items-center gap-1.5">
+            <span className="hidden shrink-0 items-center gap-1 rounded-md border border-rose-500/30 bg-rose-500/20 px-2 py-1 text-[10px] font-black text-rose-300 sm:inline-flex">
+              <Heart className="h-3 w-3 fill-rose-500 text-rose-500" aria-hidden="true" />
+              APOIAR
+            </span>
 
-          {/* Lado Direito: Botão de Doação + Fechar */}
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={() => setIsDonationOpen(true)}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-black text-[11px] shadow-sm transition-all cursor-pointer whitespace-nowrap"
-            >
-              <Heart className="w-3 h-3 fill-slate-950" />
-              <span>Apoiar no Pix</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsVisible(false)}
-              aria-label="Fechar anúncio"
-              className="text-slate-400 hover:text-white p-1 rounded transition-colors cursor-pointer"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex shrink-0 items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setIsDonationOpen(true)}
+                className="inline-flex min-h-8 items-center gap-1 rounded-md bg-amber-500 px-2.5 text-[11px] font-black text-slate-950 transition-colors hover:bg-amber-400"
+              >
+                <Heart className="h-3 w-3 fill-slate-950" aria-hidden="true" />
+                Apoiar no Pix
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsVisible(false)}
+                aria-label="Fechar anúncio"
+                className="flex h-8 w-8 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Modal de Doação Interativo */}
-      <DonationModal
-        isOpen={isDonationOpen}
-        onClose={() => setIsDonationOpen(false)}
-      />
+      <DonationModal isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
     </>
   );
 }

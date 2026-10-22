@@ -19,8 +19,8 @@ export default function AppBottomNav() {
     "https://wa.me/5511950749119?text=Ol%C3%A1%20Lions%20Karaok%C3%AA!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20pedidos.";
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-2 py-2 shadow-lg">
-      <div className="flex items-center justify-around max-w-md mx-auto">
+    <nav className="fixed bottom-2 left-1/2 z-50 w-[calc(100%-4px)] max-w-none -translate-x-1/2 rounded-lg border border-slate-200/80 bg-white/95 px-1.5 py-2 shadow-lg backdrop-blur-md">
+      <div className="flex items-center justify-around w-full mx-auto">
         <a
           href="#pedido"
           className="flex flex-col items-center gap-1 text-slate-700 hover:text-amber-600 transition-colors py-1 px-3 text-[10px] font-bold"
