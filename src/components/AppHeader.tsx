@@ -15,8 +15,8 @@ const YoutubeIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export default function AppHeader() {
   return (
-    <header className="w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
-      <div className="w-full mx-auto px-[2px] py-2.5 flex items-center justify-between">
+    <header className="w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+      <div className="w-full px-3.5 py-2.5 flex items-center justify-between">
         {/* Brand identity */}
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

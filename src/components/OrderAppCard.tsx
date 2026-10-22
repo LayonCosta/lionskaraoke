@@ -151,42 +151,51 @@ export default function OrderAppCard() {
         <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
           Selecione o Pacote
         </label>
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        <div className="grid grid-cols-2 gap-2.5 mb-3">
           <button
             type="button"
             onClick={() => setSongCount(1)}
-            className={`min-w-0 rounded-lg border p-3 pt-4 text-left transition-colors ${
+            className={`min-w-0 rounded-lg border text-left transition-colors overflow-hidden flex flex-col justify-between ${
               songCount === 1
                 ? "border-amber-500 bg-amber-50/70 ring-1 ring-amber-500/20 shadow-sm"
                 : "border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30"
             }`}
           >
-            <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">1 Música</span>
-            <span className="mt-1 block whitespace-nowrap text-[10px] leading-tight text-slate-500">Avulsa Express</span>
-            <span className="mt-2 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 15,00</span>
+            <div className="w-full bg-slate-100/90 border-b border-slate-200/70 py-1 px-2 text-center text-[9px] font-bold uppercase tracking-wider text-slate-500">
+              Avulsa Express
+            </div>
+            <div className="p-3 pt-2.5 flex-1 flex flex-col justify-between">
+              <div>
+                <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">1 Música</span>
+                <span className="mt-1 block whitespace-nowrap text-[10px] leading-tight text-slate-500">Individual</span>
+              </div>
+              <span className="mt-3 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 15,00</span>
+            </div>
           </button>
 
-          <div className="relative min-w-0">
-            <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-px whitespace-nowrap rounded-b-md border border-t-0 border-amber-600 bg-amber-500 px-2 py-0.5 text-[8px] font-black uppercase leading-none tracking-wide text-slate-950 shadow-sm">
+          <button
+            type="button"
+            onClick={() => setSongCount(5)}
+            className={`min-w-0 rounded-lg border text-left transition-colors overflow-hidden flex flex-col justify-between ${
+              songCount === 5
+                ? "border-amber-500 bg-amber-50/70 ring-1 ring-amber-500/20 shadow-sm"
+                : "border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30"
+            }`}
+          >
+            <div className="w-full bg-amber-500 border-b border-amber-600/30 py-1 px-2 text-center text-[9px] font-black uppercase tracking-wider text-slate-950">
               Mais econômico · 5 músicas
-            </span>
-            <button
-              type="button"
-              onClick={() => setSongCount(5)}
-              className={`h-full w-full min-w-0 rounded-lg border p-3 pt-4 text-left transition-colors ${
-                songCount === 5
-                  ? "border-amber-500 bg-amber-50/70 ring-1 ring-amber-500/20 shadow-sm"
-                  : "border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30"
-              }`}
-            >
-              <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">Combo 5 músicas</span>
-              <span className="mt-1 flex min-w-0 items-center gap-1 text-[8px] font-semibold leading-tight">
-                <span className="shrink-0 rounded-sm bg-amber-100 px-1 py-0.5 font-extrabold text-amber-900">R$ 10/un.</span>
-                <span className="min-w-0 truncate text-emerald-700">Poupe R$ 25</span>
-              </span>
-              <span className="mt-2 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 50,00</span>
-            </button>
-          </div>
+            </div>
+            <div className="p-3 pt-2.5 flex-1 flex flex-col justify-between">
+              <div>
+                <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">Combo 5 músicas</span>
+                <span className="mt-1 flex min-w-0 items-center gap-1 text-[8px] font-semibold leading-tight">
+                  <span className="shrink-0 rounded-sm bg-amber-100 px-1 py-0.5 font-extrabold text-amber-900">R$ 10/un.</span>
+                  <span className="min-w-0 truncate text-emerald-700">Poupe R$ 25</span>
+                </span>
+              </div>
+              <span className="mt-3 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 50,00</span>
+            </div>
+          </button>
         </div>
 
         {/* Ajuste Fino de Quantidade */}

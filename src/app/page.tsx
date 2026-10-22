@@ -9,10 +9,10 @@ import AppBottomNav from "@/components/AppBottomNav";
 
 export default function Home() {
   return (
-    <div className="mx-auto flex min-h-screen w-[calc(100%-4px)] max-w-none flex-col bg-slate-50 text-slate-900 font-sans">
+    <div className="flex min-h-screen w-full flex-col bg-slate-50 text-slate-900 font-sans pb-20">
       <StickyBanner />
       <AppHeader />
-      <main className="flex-1 w-full px-0 py-3 sm:py-5 flex flex-col items-stretch gap-1">
+      <main className="flex-1 w-full px-3 py-3 flex flex-col items-stretch gap-2.5">
         <OrderAppCard />
         <RecentReleases />
         <HowItWorks />
