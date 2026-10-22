@@ -69,36 +69,36 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           </p>
 
           {/* Sugestões Ilustrativas de Apoio (Vitrine de Valores) */}
-          <div className="mb-2">
-            <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 text-center mb-2">
+          <div className="mb-3">
+            <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
               Sugestões de Apoio ao Canal:
             </span>
-            <div className="grid grid-cols-4 gap-1.5 sm:gap-2">
+            <div className="grid grid-cols-4 gap-2 pt-2">
               {suggestedValues.map((item) => (
                 <div
                   key={item.label}
-                  className={`p-2 rounded-xl text-center relative flex flex-col justify-between transition-all select-none ${
+                  className={`p-2.5 rounded-2xl text-center relative flex flex-col justify-between min-h-[66px] transition-all select-none ${
                     item.popular
-                      ? "bg-amber-50 border-2 border-amber-500 ring-2 ring-amber-500/20 shadow-sm"
+                      ? "bg-amber-50 border-2 border-amber-500 ring-2 ring-amber-500/15 shadow-sm pt-3"
                       : "bg-slate-50/80 border border-slate-200"
                   }`}
                 >
-                  {/* Tag Discreta e Elegante */}
+                  {/* Tag Discreta e Elegante com espaço folgado */}
                   {item.popular && (
-                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[7px] font-extrabold uppercase tracking-tight px-1.5 py-0.5 rounded-full whitespace-nowrap shadow-xs border border-amber-300">
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[7px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-xs border border-amber-300">
                       Popular ⭐
                     </span>
                   )}
-                  <div className={`text-xs font-black ${item.popular ? "text-amber-900 mt-1" : "text-slate-800"}`}>
+                  <div className={`text-xs font-black ${item.popular ? "text-amber-900" : "text-slate-800"}`}>
                     {item.label}
                   </div>
-                  <div className="text-[9px] text-slate-500 mt-0.5 leading-tight">
+                  <div className="text-[9px] text-slate-500 mt-1 leading-tight font-medium">
                     {item.subtitle}
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-slate-400 text-center mt-2">
+            <p className="text-[10px] text-slate-400 text-center mt-2.5">
               Copie a chave abaixo e digite o valor que desejar no app do seu banco.
             </p>
           </div>
