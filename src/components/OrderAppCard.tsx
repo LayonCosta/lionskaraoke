@@ -92,7 +92,7 @@ export default function OrderAppCard() {
   };
 
   return (
-    <div ref={cardRef} id="pedido" className="w-full bg-white rounded-lg border border-slate-200 shadow-md p-4 sm:p-6 transition-all">
+    <div ref={cardRef} id="pedido" className="w-full max-w-full overflow-hidden bg-white rounded-lg border border-slate-200 shadow-md p-3.5 sm:p-6 transition-all">
       {/* ============================================================== */}
       {/* PASSO 1: DADOS DA MÚSICA                                       */}
       {/* ============================================================== */}
@@ -304,13 +304,13 @@ export default function OrderAppCard() {
           {/* Botão para Avançar para a Tela de Pagamento (A Barreira) */}
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm py-3.5 px-4 rounded-md whitespace-nowrap shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm py-3.5 px-4 rounded-md shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
           >
             <span>Avançar para Pagamento Pix (R$ {totalPrice},00)</span>
-            <ArrowRight className="w-4 h-4 ml-0.5" />
+            <ArrowRight className="w-4 h-4 ml-0.5 shrink-0" />
           </button>
 
-          <p className="mt-2 whitespace-nowrap text-center text-[10px] font-medium leading-tight text-slate-500">
+          <p className="mt-2 text-center text-[10px] font-medium leading-tight text-slate-500 px-1">
             Passo 1 de 2: Informe a música para ver a chave Pix e finalizar.
           </p>
         </form>
@@ -327,14 +327,14 @@ export default function OrderAppCard() {
             onClick={() => setCurrentStep("form")}
             className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors mb-3 cursor-pointer"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
+            <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
             <span>Voltar e alterar música</span>
           </button>
 
           {/* Header do Pagamento */}
           <div className="border-b border-slate-100 pb-4 mb-4 text-center">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-1.5">
-              <Sparkles className="w-3 h-3 text-amber-600" />
+              <Sparkles className="w-3 h-3 text-amber-600 shrink-0" />
               Passo 2 de 2: Pagamento do Pedido
             </span>
             <div className="text-2xl font-black text-slate-900 leading-tight">
@@ -346,9 +346,9 @@ export default function OrderAppCard() {
           </div>
 
           {/* Caixa da Chave Pix Nubank */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 sm:p-4 mb-4 text-center">
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-bold text-slate-700 uppercase tracking-wide">
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 sm:p-4 mb-4 text-center overflow-hidden">
+            <div className="flex flex-wrap items-center justify-between text-xs mb-2 gap-1">
+              <span className="font-bold text-slate-700 uppercase tracking-wide text-[11px]">
                 Chave Pix (Nubank):
               </span>
               <span className="text-[11px] text-slate-500 font-medium">
@@ -357,8 +357,8 @@ export default function OrderAppCard() {
             </div>
 
             {/* Chave Pix Completa Centralizada */}
-            <div className="p-2.5 bg-white rounded-lg border border-slate-200 shadow-xs mb-2.5">
-              <code className="block text-[11px] sm:text-xs font-extrabold font-mono text-slate-900 break-all select-all tracking-wide text-center">
+            <div className="p-2 bg-white rounded-lg border border-slate-200 shadow-xs mb-2.5 overflow-hidden">
+              <code className="block text-[10.5px] sm:text-xs font-bold font-mono text-slate-900 break-all select-all tracking-tight text-center leading-relaxed">
                 {pixKey}
               </code>
             </div>
@@ -367,7 +367,7 @@ export default function OrderAppCard() {
             <button
               type="button"
               onClick={handleCopyPix}
-              className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-extrabold transition-all shadow-sm cursor-pointer active:scale-[0.99] ${
+              className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-extrabold transition-all shadow-sm cursor-pointer active:scale-[0.99] ${
                 copiedPix
                   ? "bg-emerald-600 text-white shadow-emerald-200"
                   : "bg-slate-900 hover:bg-slate-800 text-white"
@@ -375,12 +375,12 @@ export default function OrderAppCard() {
             >
               {copiedPix ? (
                 <>
-                  <Check className="w-4 h-4 text-white" />
+                  <Check className="w-4 h-4 text-white shrink-0" />
                   <span>Chave Pix Copiada com Sucesso!</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-4 h-4 text-amber-400" />
+                  <Copy className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>Copiar Chave Pix</span>
                 </>
               )}
@@ -394,7 +394,7 @@ export default function OrderAppCard() {
           </div>
 
           {/* Instruções Rápidas */}
-          <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200 text-[11px] text-amber-900 space-y-1 mb-4">
+          <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200 text-[11px] text-amber-900 space-y-1 mb-4 text-left">
             <span className="font-extrabold block text-amber-950">
               Instruções para liberação:
             </span>
@@ -414,13 +414,13 @@ export default function OrderAppCard() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCopyPix}
-            className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm py-3 px-4 rounded-md whitespace-nowrap shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm py-3 px-3 rounded-md shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer text-center"
           >
             <WhatsappIcon className="w-5 h-5 text-white shrink-0" />
             <span>Já Fiz o Pix! Enviar Comprovante</span>
           </a>
 
-          <p className="mt-2 whitespace-nowrap text-center text-[10px] font-medium leading-tight text-slate-500">
+          <p className="mt-2 text-center text-[10px] font-medium leading-tight text-slate-500 px-1">
             Seu pedido entra na fila prioritária de produção assim que enviar o comprovante!
           </p>
         </div>
