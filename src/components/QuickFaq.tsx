@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Como recebo a minha música?",
-    a: "Publicamos o karaokê no YouTube em vídeo de até 4K e criamos uma playlist com o nome escolhido por você. O áudio é preparado com ferramentas de remoção vocal, e o resultado pode variar conforme a gravação original.",
+    a: "A música é publicada no YouTube em altíssima definição (Smart TV 4K) com áudio tratado em 48 kHz. Criamos uma playlist exclusiva com o seu nome para você acessar e compartilhar quando quiser.",
   },
   {
     q: "Posso pedir qualquer cantor ou gênero musical?",
@@ -26,8 +26,8 @@ export default function QuickFaq() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="duvidas" className="w-full mt-4 px-0">
-      <div className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm">
+    <section id="duvidas" className="w-full max-w-xl mx-auto mt-8 px-2 sm:px-0">
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
         <h2 className="text-base font-bold text-slate-900 tracking-tight mb-4">
           Dúvidas Frequentes
         </h2>
