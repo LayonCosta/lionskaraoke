@@ -346,8 +346,8 @@ export default function OrderAppCard() {
           </div>
 
           {/* Caixa da Chave Pix Nubank */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 sm:p-4 mb-4 space-y-2.5">
-            <div className="flex items-center justify-between text-xs">
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 sm:p-4 mb-4 text-center">
+            <div className="flex items-center justify-between text-xs mb-2">
               <span className="font-bold text-slate-700 uppercase tracking-wide">
                 Chave Pix (Nubank):
               </span>
@@ -356,35 +356,38 @@ export default function OrderAppCard() {
               </span>
             </div>
 
-            <div className="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 shadow-sm">
-              <code className="text-xs sm:text-sm font-bold font-mono text-slate-800 flex-1 truncate select-all px-1">
+            {/* Chave Pix Completa Centralizada */}
+            <div className="p-2.5 bg-white rounded-lg border border-slate-200 shadow-xs mb-2.5">
+              <code className="block text-[11px] sm:text-xs font-extrabold font-mono text-slate-900 break-all select-all tracking-wide text-center">
                 {pixKey}
               </code>
-              <button
-                type="button"
-                onClick={handleCopyPix}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 cursor-pointer ${
-                  copiedPix
-                    ? "bg-emerald-500 text-white"
-                    : "bg-slate-900 hover:bg-slate-800 text-white"
-                }`}
-              >
-                {copiedPix ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Copiada!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copiar Chave</span>
-                  </>
-                )}
-              </button>
             </div>
 
+            {/* Botão Copiar Chave Centralizado e Chamativo */}
+            <button
+              type="button"
+              onClick={handleCopyPix}
+              className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs font-extrabold transition-all shadow-sm cursor-pointer active:scale-[0.99] ${
+                copiedPix
+                  ? "bg-emerald-600 text-white shadow-emerald-200"
+                  : "bg-slate-900 hover:bg-slate-800 text-white"
+              }`}
+            >
+              {copiedPix ? (
+                <>
+                  <Check className="w-4 h-4 text-white" />
+                  <span>Chave Pix Copiada com Sucesso!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-amber-400" />
+                  <span>Copiar Chave Pix</span>
+                </>
+              )}
+            </button>
+
             {copiedPix && (
-              <p className="text-[10px] text-emerald-700 font-bold leading-tight">
+              <p className="text-[10px] text-emerald-700 font-bold leading-tight mt-2 animate-fadeIn">
                 ✓ Chave copiada! Abra o app do seu banco e faça o Pix de R$ {totalPrice},00.
               </p>
             )}
