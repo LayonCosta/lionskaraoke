@@ -304,10 +304,10 @@ export default function OrderAppCard() {
           {/* Botão para Avançar para a Tela de Pagamento (A Barreira) */}
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm py-3.5 px-4 rounded-md shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-[13px] sm:text-sm py-3.5 px-2 rounded-md whitespace-nowrap shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
           >
             <span>Avançar para Pagamento Pix (R$ {totalPrice},00)</span>
-            <ArrowRight className="w-4 h-4 ml-0.5 shrink-0" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </button>
 
           <p className="mt-2 text-center text-[10px] font-medium leading-tight text-slate-500 px-1">
