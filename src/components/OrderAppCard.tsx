@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import {
   Music,
   Mic,
@@ -12,14 +12,11 @@ import {
   Sparkles,
   ArrowRight,
   ArrowLeft,
-  QrCode,
-  Loader2,
-  CheckCircle2,
   AlertCircle,
-  RefreshCw,
+  QrCode,
 } from "lucide-react";
 
-// Ícone Oficial do WhatsApp em SVG limpo
+// Ícone Oficial do WhatsApp em SVG limpo (sem emoji)
 const WhatsappIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
@@ -31,76 +28,32 @@ const WhatsappIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-interface PixPaymentInfo {
-  paymentId: number | string;
-  totalPrice: number;
-  qrCode: string;
-  qrCodeBase64: string;
-}
-
 export default function OrderAppCard() {
   const [songName, setSongName] = useState("");
   const [artistName, setArtistName] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [songCount, setSongCount] = useState(1);
 
-  // Estados do Fluxo
-  const [currentStep, setCurrentStep] = useState<"form" | "pix" | "approved">("form");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [isCheckingManual, setIsCheckingManual] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [paymentData, setPaymentData] = useState<PixPaymentInfo | null>(null);
+  // Estados do Fluxo de 2 Passos
+  const [currentStep, setCurrentStep] = useState<"form" | "payment">("form");
   const [copiedPix, setCopiedPix] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const pixKey = "f17a79b0-60f0-4eec-9e09-0d3fb8c50c02";
+  const pixHolder = "Layon Costa (Nubank)";
   const whatsappNumber = "5511950749119";
-  const pollingRef = useRef<NodeJS.Timeout | null>(null);
 
   // Preço progressivo
   const unitPrice = songCount >= 5 ? 10 : 15;
   const totalPrice = songCount * unitPrice;
   const savings = songCount >= 5 ? songCount * 15 - totalPrice : 0;
 
-  // Limpeza de polling quando desmontar ou mudar de tela
-  useEffect(() => {
-    return () => {
-      if (pollingRef.current) clearInterval(pollingRef.current);
-    };
-  }, []);
-
-  // Polling automático para detecção instantânea do pagamento
-  useEffect(() => {
-    if (currentStep === "pix" && paymentData?.paymentId) {
-      const checkStatus = async () => {
-        try {
-          const res = await fetch(`/api/pix/status?id=${paymentData.paymentId}`);
-          if (!res.ok) return;
-          const data = await res.json();
-
-          if (data.isApproved) {
-            if (pollingRef.current) clearInterval(pollingRef.current);
-            setCurrentStep("approved");
-          }
-        } catch {
-          // Erro de rede silencioso no polling
-        }
-      };
-
-      // Dispara verificação a cada 2.5 segundos
-      pollingRef.current = setInterval(checkStatus, 2500);
-
-      return () => {
-        if (pollingRef.current) clearInterval(pollingRef.current);
-      };
-    }
-  }, [currentStep, paymentData]);
-
-  // Gerar cobrança Pix no Mercado Pago
-  const handleGeneratePix = async (e: React.FormEvent) => {
+  const handleAdvanceToPayment = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
 
     if (!songName.trim()) {
-      setErrorMessage("Por favor, digite o nome da música que você quer.");
+      setErrorMessage("Por favor, digite o nome da música desejada.");
       return;
     }
 
@@ -109,46 +62,12 @@ export default function OrderAppCard() {
       return;
     }
 
-    setIsGenerating(true);
-
-    try {
-      const response = await fetch("/api/pix/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          songName: songName.trim(),
-          artistName: artistName.trim(),
-          customerName: customerName.trim(),
-          songCount,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || "Não foi possível gerar o Pix. Tente novamente.");
-      }
-
-      setPaymentData({
-        paymentId: data.paymentId,
-        totalPrice: data.totalPrice,
-        qrCode: data.qrCode,
-        qrCodeBase64: data.qrCodeBase64,
-      });
-
-      setCurrentStep("pix");
-    } catch (err: any) {
-      setErrorMessage(err.message || "Erro de conexão ao gerar o Pix.");
-    } finally {
-      setIsGenerating(false);
-    }
+    setCurrentStep("payment");
   };
 
-  // Copiar código Pix Copia e Cola
   const handleCopyPix = async () => {
-    if (!paymentData?.qrCode) return;
     try {
-      await navigator.clipboard.writeText(paymentData.qrCode);
+      await navigator.clipboard.writeText(pixKey);
       setCopiedPix(true);
       setTimeout(() => setCopiedPix(false), 3000);
     } catch {
@@ -156,44 +75,22 @@ export default function OrderAppCard() {
     }
   };
 
-  // Checar status manualmente se o usuário quiser clicar
-  const handleManualCheck = async () => {
-    if (!paymentData?.paymentId) return;
-    setIsCheckingManual(true);
-    try {
-      const res = await fetch(`/api/pix/status?id=${paymentData.paymentId}`);
-      const data = await res.json();
-      if (data.isApproved) {
-        setCurrentStep("approved");
-      } else {
-        alert("O pagamento ainda não foi identificado pelo banco. Aguarde alguns instantes!");
-      }
-    } catch {
-      alert("Erro ao checar status. Tente novamente em alguns segundos.");
-    } finally {
-      setIsCheckingManual(false);
-    }
-  };
-
-  // Montar link do WhatsApp após aprovação do pagamento
-  const buildApprovedWhatsappUrl = () => {
+  const buildWhatsappUrl = () => {
     const musicText = songName.trim() || "A definir";
     const artistText = artistName.trim() || "A definir";
     const nameText = customerName.trim() || "Cliente Lions";
-    const pId = paymentData?.paymentId || "CONFIRMADO";
 
     const msg = [
-      "Olá Lions Karaokê! Acabei de realizar o pagamento do meu pedido VIP Express:",
+      "Olá Lions Karaokê! Acabei de fazer o Pix para meu pedido VIP Express:",
       "",
-      `*STATUS:* PAGO E APROVADO PELO MERCADO PAGO`,
-      `*ID da Transação:* #${pId}`,
       `*Música:* ${musicText}`,
       `*Cantor/Artista:* ${artistText}`,
       `*Nome para a Playlist:* ${nameText}`,
       `*Quantidade:* ${songCount} ${songCount === 1 ? "música" : "músicas"}`,
       `*Valor Pago:* R$ ${totalPrice},00`,
       "",
-      "Meu pedido já está confirmado! Aguardo a postagem prioritária no canal."
+      `*Chave Pix Utilizada:* ${pixKey} (${pixHolder})`,
+      "📎 *SEGUE O COMPROVANTE DO PIX EM ANEXO:*"
     ].join("\n");
 
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
@@ -202,10 +99,10 @@ export default function OrderAppCard() {
   return (
     <div id="pedido" className="w-full max-w-xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-md p-5 sm:p-8 transition-all">
       {/* ============================================================== */}
-      {/* ETAPA 1: FORMULÁRIO DE PEDIDO                                  */}
+      {/* PASSO 1: DADOS DA MÚSICA                                       */}
       {/* ============================================================== */}
       {currentStep === "form" && (
-        <form onSubmit={handleGeneratePix}>
+        <form onSubmit={handleAdvanceToPayment}>
           {/* Card Header */}
           <div className="border-b border-slate-100 pb-5 mb-6">
             <div className="flex items-center justify-between gap-3 mb-1">
@@ -221,7 +118,7 @@ export default function OrderAppCard() {
             </p>
           </div>
 
-          {/* Erro Geral */}
+          {/* Erro de Validação */}
           {errorMessage && (
             <div className="mb-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
@@ -229,7 +126,7 @@ export default function OrderAppCard() {
             </div>
           )}
 
-          {/* Campos do Formulário */}
+          {/* Formulário */}
           <div className="space-y-4 mb-6">
             {/* Campo Música */}
             <div>
@@ -363,7 +260,7 @@ export default function OrderAppCard() {
             </div>
           </div>
 
-          {/* Resumo do Pedido e Botão para Gerar Pix */}
+          {/* Resumo do Pedido */}
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-6">
             <div className="flex items-center justify-between">
               <div>
@@ -371,7 +268,7 @@ export default function OrderAppCard() {
                   Total do Pedido
                 </span>
                 <span className="text-xs text-slate-400">
-                  Pagamento instantâneo via Pix
+                  {songCount} {songCount === 1 ? "música selecionada" : "músicas selecionadas"}
                 </span>
               </div>
               <div className="text-right">
@@ -398,93 +295,65 @@ export default function OrderAppCard() {
             </div>
           </div>
 
-          {/* Botão de Avançar para Pagamento */}
+          {/* Botão para Avançar para a Tela do Pix (Barreira) */}
           <button
             type="submit"
-            disabled={isGenerating}
-            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer disabled:opacity-60"
+            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
           >
-            {isGenerating ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                <span>Gerando Chave Pix Oficial...</span>
-              </>
-            ) : (
-              <>
-                <QrCode className="w-5 h-5" />
-                <span>Pagar com Pix Oficial (R$ {totalPrice},00)</span>
-                <ArrowRight className="w-5 h-5 ml-1" />
-              </>
-            )}
+            <span>Avançar para Pagamento Pix (R$ {totalPrice},00)</span>
+            <ArrowRight className="w-5 h-5 ml-1" />
           </button>
 
           <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
-            Ambiente seguro processado pelo Mercado Pago. O pedido é confirmado na hora.
+            Passo 1 de 2: Defina sua música para gerar os dados de pagamento.
           </p>
         </form>
       )}
 
       {/* ============================================================== */}
-      {/* ETAPA 2: TELA DO PIX (A BARREIRA DE PAGAMENTO)                 */}
+      {/* PASSO 2: A BARREIRA DO PIX NUBANK (TAXA ZERO)                   */}
       {/* ============================================================== */}
-      {currentStep === "pix" && paymentData && (
+      {currentStep === "payment" && (
         <div className="animate-fadeIn">
           {/* Botão Voltar */}
           <button
             type="button"
             onClick={() => setCurrentStep("form")}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors mb-4"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors mb-4 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Voltar e alterar música</span>
           </button>
 
-          {/* Header da Tela de Pagamento */}
-          <div className="text-center pb-4 mb-4 border-b border-slate-100">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200 mb-2">
+          {/* Header do Pagamento */}
+          <div className="text-center pb-4 mb-5 border-b border-slate-100">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              Aguardando Pagamento Pix
+              Passo 2 de 2: Pagamento do Pedido
             </span>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900">
-              R$ {paymentData.totalPrice},00
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+              R$ {totalPrice},00
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              {songName} ({artistName})
+              {songName} • {artistName} {customerName ? `(${customerName})` : ""}
             </p>
           </div>
 
-          {/* QR Code Imagem do Mercado Pago */}
-          <div className="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-200 mb-5">
-            {paymentData.qrCodeBase64 ? (
-              <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                <img
-                  src={`data:image/png;base64,${paymentData.qrCodeBase64}`}
-                  alt="QR Code Pix Mercado Pago"
-                  className="w-48 h-48 sm:w-56 sm:h-56 object-contain"
-                />
-              </div>
-            ) : (
-              <div className="w-48 h-48 bg-slate-200 rounded-xl flex items-center justify-center text-slate-400 text-xs">
-                QR Code Indisponível
-              </div>
-            )}
-            <span className="text-[11px] text-slate-500 font-medium mt-2">
-              Aponte a câmera do celular no app do seu banco
-            </span>
-          </div>
+          {/* Caixa da Chave Pix Nubank */}
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-bold text-slate-700 uppercase tracking-wide">
+                Chave Pix (Nubank)
+              </span>
+              <span className="text-[11px] text-slate-500 font-medium">
+                Favorecido: <b>Layon Costa</b>
+              </span>
+            </div>
 
-          {/* Chave Pix Copia e Cola */}
-          <div className="space-y-2 mb-5">
-            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
-              Pix Copia e Cola (Para celular)
-            </label>
-            <div className="flex items-center gap-2 p-2 bg-slate-50 rounded-xl border border-slate-200">
-              <input
-                type="text"
-                readOnly
-                value={paymentData.qrCode}
-                className="w-full text-xs font-mono bg-transparent text-slate-700 outline-none truncate px-1 select-all"
-              />
+            <div className="flex items-center gap-2 p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
+              <code className="text-xs sm:text-sm font-bold font-mono text-slate-800 flex-1 truncate px-2 select-all">
+                {pixKey}
+              </code>
               <button
                 type="button"
                 onClick={handleCopyPix}
@@ -497,105 +366,57 @@ export default function OrderAppCard() {
                 {copiedPix ? (
                   <>
                     <Check className="w-4 h-4 text-white" />
-                    <span>Copiado!</span>
+                    <span>Copiada!</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>Copiar Pix</span>
+                    <span>Copiar Chave</span>
                   </>
                 )}
               </button>
             </div>
+
             {copiedPix && (
-              <p className="text-[11px] text-emerald-600 font-bold">
-                Código copiado! Abra o aplicativo do seu banco, escolha "Pix Copia e Cola" e confirme.
+              <p className="text-[11px] text-emerald-600 font-bold animate-fadeIn">
+                ✓ Chave copiada com sucesso! Abra o app do seu banco e faça a transferência de R$ {totalPrice},00.
               </p>
             )}
           </div>
 
-          {/* Caixa de Monitoramento Automático em Tempo Real */}
-          <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200 flex items-start gap-3 mb-5">
-            <div className="p-2 rounded-lg bg-amber-100 text-amber-700 shrink-0 mt-0.5">
-              <Loader2 className="w-4 h-4 animate-spin" />
+          {/* Instruções Rápidas */}
+          <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 text-xs text-amber-900 space-y-1.5 mb-6">
+            <span className="font-extrabold block text-amber-950 mb-1">
+              Como finalizar seu pedido:
+            </span>
+            <div className="flex items-start gap-2">
+              <span className="font-bold text-amber-800">1.</span>
+              <span>Clique no botão preto acima para <b>Copiar a Chave Pix</b>.</span>
             </div>
-            <div className="flex-1 text-xs">
-              <span className="font-extrabold text-amber-900 block">
-                Monitorando pagamento em tempo real...
-              </span>
-              <span className="text-amber-800 text-[11px] leading-relaxed">
-                Assim que você transferir no seu banco, o sistema reconhece automaticamente em menos de 3 segundos e libera seu pedido!
-              </span>
+            <div className="flex items-start gap-2">
+              <span className="font-bold text-amber-800">2.</span>
+              <span>Faça a transferência de <b>R$ {totalPrice},00</b> no seu banco.</span>
             </div>
-          </div>
-
-          {/* Botão de Checagem Manual de Suporte */}
-          <button
-            type="button"
-            onClick={handleManualCheck}
-            disabled={isCheckingManual}
-            className="w-full py-2.5 px-4 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50 flex items-center justify-center gap-2 transition-colors cursor-pointer"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${isCheckingManual ? "animate-spin" : ""}`} />
-            <span>{isCheckingManual ? "Verificando com o banco..." : "Já fiz o Pix, verificar agora"}</span>
-          </button>
-        </div>
-      )}
-
-      {/* ============================================================== */}
-      {/* ETAPA 3: PAGAMENTO APROVADO! (LIBERAÇÃO DO WHATSAPP)            */}
-      {/* ============================================================== */}
-      {currentStep === "approved" && (
-        <div className="text-center py-4 animate-fadeIn">
-          {/* Ícone de Sucesso */}
-          <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 border-2 border-emerald-300 shadow-sm animate-bounce">
-            <CheckCircle2 className="w-9 h-9" />
-          </div>
-
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-black bg-emerald-50 text-emerald-800 border border-emerald-200 mb-2 uppercase tracking-wider">
-            Pagamento Aprovado
-          </span>
-
-          <h2 className="text-2xl font-black text-slate-900 mb-1">
-            Pedido Confirmado!
-          </h2>
-          <p className="text-sm text-slate-600 max-w-sm mx-auto mb-6">
-            Recebemos seu Pix de <b>R$ {totalPrice},00</b> com sucesso via Mercado Pago! Sua música já está garantida na fila de produção VIP.
-          </p>
-
-          {/* Resumo do Pedido Aprovado */}
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs space-y-1.5 mb-6">
-            <div className="flex justify-between text-slate-500">
-              <span>ID do Pagamento:</span>
-              <span className="font-mono font-bold text-slate-800">#{paymentData?.paymentId}</span>
-            </div>
-            <div className="flex justify-between text-slate-500">
-              <span>Música:</span>
-              <span className="font-bold text-slate-900">{songName}</span>
-            </div>
-            <div className="flex justify-between text-slate-500">
-              <span>Cantor/Banda:</span>
-              <span className="font-bold text-slate-900">{artistName}</span>
-            </div>
-            <div className="flex justify-between text-slate-500">
-              <span>Status:</span>
-              <span className="font-extrabold text-emerald-600">CONFIRMADO (VIP 48H)</span>
+            <div className="flex items-start gap-2">
+              <span className="font-bold text-amber-800">3.</span>
+              <span>Clique no botão verde abaixo para <b>enviar o comprovante no WhatsApp</b>!</span>
             </div>
           </div>
 
-          {/* Botão Oficial do WhatsApp com os dados aprovados */}
+          {/* Botão Oficial do WhatsApp com Aviso de Comprovante */}
           <a
-            href={buildApprovedWhatsappUrl()}
+            href={buildWhatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-black text-base py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.99] cursor-pointer"
+            onClick={handleCopyPix}
+            className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-base py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.99] cursor-pointer"
           >
             <WhatsappIcon className="w-6 h-6 text-white shrink-0" />
-            <span>Notificar Equipe no WhatsApp</span>
+            <span>Já Fiz o Pix! Enviar Comprovante</span>
           </a>
 
-          <p className="text-[11px] text-slate-400 mt-3 font-medium">
-            Clique acima para avisar a equipe que seu pedido já está pago e entrar na produção hoje!
+          <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
+            Seu pedido entra na fila prioritária de produção assim que você enviar o comprovante!
           </p>
         </div>
       )}
