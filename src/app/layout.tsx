@@ -10,7 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Lions Karaokê | Pedidos VIP Express",
-  description: "Peça seu karaokê personalizado sem esperar na fila! Produção e remasterização profissional em até 48 horas.",
+  description: "Peça um karaokê personalizado com prazo VIP de até 48 horas. O resultado da remoção vocal pode variar conforme a gravação original.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Lions Karaokê | Pedidos VIP Express",
-    description: "Peça sua música favorita com letra sincronizada em 4K e playback profissional.",
+    description: "Peça sua música favorita com letra sincronizada em vídeo de até 4K. O resultado do áudio pode variar conforme a gravação original.",
     type: "website",
   },
 };
@@ -37,8 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${plusJakartaSans.variable} h-full antialiased`}>
-      <body className="min-h-full bg-slate-50 text-slate-900 font-sans flex flex-col selection:bg-amber-100 selection:text-amber-900 pb-16 md:pb-0">
-        {children}
+      <body className="min-h-full bg-slate-950 text-slate-900 font-sans flex flex-col items-center selection:bg-amber-100 selection:text-amber-900">
+        <div className="w-full max-w-[480px] min-h-screen bg-slate-50 flex flex-col relative shadow-[0_0_50px_rgba(0,0,0,0.5)] border-x border-slate-200/40 sm:border-slate-800">
+          {children}
+        </div>
       </body>
     </html>
   );

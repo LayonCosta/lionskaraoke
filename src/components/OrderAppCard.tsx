@@ -1,20 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  Music,
-  Mic,
-  User,
-  Copy,
-  Check,
-  Clock,
-  ShieldCheck,
-  Sparkles,
-  ArrowRight,
-  ArrowLeft,
-  AlertCircle,
-  QrCode,
-} from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Music, Mic, User, Copy, Check, Clock, ShieldCheck, Sparkles, AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
 
 // Ícone Oficial do WhatsApp em SVG limpo (sem emoji)
 const WhatsappIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -33,14 +20,15 @@ export default function OrderAppCard() {
   const [artistName, setArtistName] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [songCount, setSongCount] = useState(1);
-
-  // Estados do Fluxo de 2 Passos
-  const [currentStep, setCurrentStep] = useState<"form" | "payment">("form");
   const [copiedPix, setCopiedPix] = useState(false);
+  const [currentStep, setCurrentStep] = useState<"form" | "payment">("form");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const cardRef = useRef<HTMLDivElement>(null);
+  const songInputRef = useRef<HTMLInputElement>(null);
+  const artistInputRef = useRef<HTMLInputElement>(null);
+
   const pixKey = "f17a79b0-60f0-4eec-9e09-0d3fb8c50c02";
-  const pixHolder = "Layon Costa (Nubank)";
   const whatsappNumber = "5511950749119";
 
   // Preço progressivo
@@ -48,37 +36,44 @@ export default function OrderAppCard() {
   const totalPrice = songCount * unitPrice;
   const savings = songCount >= 5 ? songCount * 15 - totalPrice : 0;
 
-  const handleAdvanceToPayment = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMessage(null);
-
-    if (!songName.trim()) {
-      setErrorMessage("Por favor, digite o nome da música desejada.");
-      return;
-    }
-
-    if (!artistName.trim()) {
-      setErrorMessage("Por favor, digite o cantor ou banda da música.");
-      return;
-    }
-
-    setCurrentStep("payment");
-  };
-
   const handleCopyPix = async () => {
     try {
       await navigator.clipboard.writeText(pixKey);
       setCopiedPix(true);
-      setTimeout(() => setCopiedPix(false), 3000);
+      setTimeout(() => setCopiedPix(false), 2500);
     } catch {
       setCopiedPix(false);
     }
   };
 
+  const handleAdvanceToPayment = (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage(null);
+
+    if (!songName.trim()) {
+      setErrorMessage("Por favor, preencha o nome da música acima.");
+      songInputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => songInputRef.current?.focus(), 300);
+      return;
+    }
+
+    if (!artistName.trim()) {
+      setErrorMessage("Por favor, preencha o cantor ou banda acima.");
+      artistInputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => artistInputRef.current?.focus(), 300);
+      return;
+    }
+
+    setCurrentStep("payment");
+    setTimeout(() => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+  };
+
   const buildWhatsappUrl = () => {
-    const musicText = songName.trim() || "A definir";
-    const artistText = artistName.trim() || "A definir";
-    const nameText = customerName.trim() || "Cliente Lions";
+    const musicText = songName.trim() ? songName.trim() : "A definir";
+    const artistText = artistName.trim() ? artistName.trim() : "A definir";
+    const nameText = customerName.trim() ? customerName.trim() : "Cliente Lions";
 
     const msg = [
       "Olá Lions Karaokê! Acabei de fazer o Pix para meu pedido VIP Express:",
@@ -89,15 +84,15 @@ export default function OrderAppCard() {
       `*Quantidade:* ${songCount} ${songCount === 1 ? "música" : "músicas"}`,
       `*Valor Pago:* R$ ${totalPrice},00`,
       "",
-      `*Chave Pix Utilizada:* ${pixKey} (${pixHolder})`,
-      "📎 *SEGUE O COMPROVANTE DO PIX EM ANEXO:*"
+      `*Chave Pix Nubank:* ${pixKey} (Layon Costa)`,
+      "📎 *SEGUE MEU COMPROVANTE DO PIX EM ANEXO:*"
     ].join("\n");
 
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
   };
 
   return (
-    <div id="pedido" className="w-full max-w-xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-md p-5 sm:p-8 transition-all">
+    <div ref={cardRef} id="pedido" className="w-full bg-white rounded-lg border border-slate-200 shadow-md p-4 sm:p-6 transition-all">
       {/* ============================================================== */}
       {/* PASSO 1: DADOS DA MÚSICA                                       */}
       {/* ============================================================== */}
@@ -105,28 +100,28 @@ export default function OrderAppCard() {
         <form onSubmit={handleAdvanceToPayment}>
           {/* Card Header */}
           <div className="border-b border-slate-100 pb-5 mb-6">
-            <div className="flex items-center justify-between gap-3 mb-1">
-              <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+            <div className="flex items-center justify-between gap-2 mb-1">
+              <h1 className="min-w-0 flex-1 whitespace-nowrap text-[clamp(14px,4vw,18px)] font-extrabold leading-tight tracking-tight text-slate-900">
                 Fazer Pedido de Karaokê
               </h1>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+              <span className="shrink-0 whitespace-nowrap rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-800">
                 VIP 48h
               </span>
             </div>
-            <p className="text-sm text-slate-500">
+            <p className="text-xs text-slate-500">
               Preencha os dados da música desejada para receber no canal Lions Karaokê.
             </p>
           </div>
 
-          {/* Erro de Validação */}
+          {/* Alerta de Validação com Rolagem Suave */}
           {errorMessage && (
-            <div className="mb-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2">
+            <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center gap-2 animate-fadeIn">
               <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
               <span>{errorMessage}</span>
             </div>
           )}
 
-          {/* Formulário */}
+          {/* Formulário Direto */}
           <div className="space-y-4 mb-6">
             {/* Campo Música */}
             <div>
@@ -138,11 +133,19 @@ export default function OrderAppCard() {
                   <Music className="w-4 h-4" />
                 </div>
                 <input
+                  ref={songInputRef}
                   type="text"
                   value={songName}
-                  onChange={(e) => setSongName(e.target.value)}
-                  placeholder="Ex: Pra não pensar em você, Nuvem de Lágrimas..."
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all placeholder:text-slate-400"
+                  onChange={(e) => {
+                    setSongName(e.target.value);
+                    if (errorMessage) setErrorMessage(null);
+                  }}
+                  placeholder="Ex: Página de Amigos, Fogão de Lenha, Evidências..."
+                  className={`w-full pl-10 pr-4 py-3 rounded-lg border text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 transition-all placeholder:text-slate-400 ${
+                    errorMessage && !songName.trim()
+                      ? "border-red-400 bg-red-50/50 focus:border-red-500 focus:ring-red-500/20"
+                      : "border-slate-200 bg-slate-50/50 focus:border-amber-500 focus:ring-amber-500/20"
+                  }`}
                 />
               </div>
             </div>
@@ -157,11 +160,19 @@ export default function OrderAppCard() {
                   <Mic className="w-4 h-4" />
                 </div>
                 <input
+                  ref={artistInputRef}
                   type="text"
                   value={artistName}
-                  onChange={(e) => setArtistName(e.target.value)}
-                  placeholder="Ex: Zezé Di Camargo e Luciano, Chitãozinho..."
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all placeholder:text-slate-400"
+                  onChange={(e) => {
+                    setArtistName(e.target.value);
+                    if (errorMessage) setErrorMessage(null);
+                  }}
+                  placeholder="Ex: Chitãozinho & Xororó, Benito di Paula..."
+                  className={`w-full pl-10 pr-4 py-3 rounded-lg border text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 transition-all placeholder:text-slate-400 ${
+                    errorMessage && !artistName.trim()
+                      ? "border-red-400 bg-red-50/50 focus:border-red-500 focus:ring-red-500/20"
+                      : "border-slate-200 bg-slate-50/50 focus:border-amber-500 focus:ring-amber-500/20"
+                  }`}
                 />
               </div>
             </div>
@@ -180,62 +191,61 @@ export default function OrderAppCard() {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="Como quer ser identificado no canal"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all placeholder:text-slate-400"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all placeholder:text-slate-400"
                 />
               </div>
             </div>
           </div>
 
           {/* Seletor de Pacotes */}
-          <div className="mb-6">
+          <div className="mb-5">
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
               Selecione o Pacote
             </label>
-            <div className="grid grid-cols-2 gap-3 mb-3">
-              {/* Opção 1 Música */}
+            <div className="grid grid-cols-2 gap-3 mb-3 pt-1.5">
               <button
                 type="button"
                 onClick={() => setSongCount(1)}
-                className={`p-3.5 rounded-2xl border text-left transition-all relative flex flex-col justify-between min-h-[92px] ${
+                className={`min-w-0 rounded-lg border p-3 pt-4 text-left transition-colors flex flex-col justify-between ${
                   songCount === 1
-                    ? "border-amber-500 bg-amber-50/60 ring-2 ring-amber-500/15 shadow-sm"
-                    : "border-slate-200 bg-white hover:bg-slate-50"
+                    ? "border-amber-500 bg-amber-50/70 ring-1 ring-amber-500/20 shadow-sm"
+                    : "border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30"
                 }`}
               >
                 <div>
-                  <div className="font-bold text-sm text-slate-900 leading-tight">1 Música</div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">Avulsa Express</div>
+                  <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">1 Música</span>
+                  <span className="mt-1 block whitespace-nowrap text-[10px] leading-tight text-slate-500">Avulsa Express</span>
                 </div>
-                <div className="text-base font-extrabold text-slate-900 mt-2.5 pt-1.5 border-t border-slate-100">
-                  R$ 15,00
-                </div>
+                <span className="mt-2.5 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 15,00</span>
               </button>
 
-              {/* Opção 5 Músicas */}
-              <button
-                type="button"
-                onClick={() => setSongCount(5)}
-                className={`p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between min-h-[92px] ${
-                  songCount === 5
-                    ? "border-amber-500 bg-amber-50/60 ring-2 ring-amber-500/15 shadow-sm"
-                    : "border-slate-200 bg-white hover:bg-slate-50"
-                }`}
-              >
-                <span className="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[9px] font-black uppercase px-2 py-0.5 rounded-bl">
-                  R$ 10 cada
+              <div className="relative min-w-0">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 z-10 whitespace-nowrap rounded-full bg-amber-500 px-2 py-0.5 text-[7.5px] sm:text-[8px] font-black uppercase tracking-wider text-slate-950 shadow-xs border border-amber-600/40 pointer-events-none">
+                  Mais econômico · 5 músicas
                 </span>
-                <div>
-                  <div className="font-bold text-sm text-slate-900 leading-tight">Combo 5 Músicas</div>
-                  <div className="text-[11px] text-emerald-600 font-bold mt-0.5">Economize R$ 25,00</div>
-                </div>
-                <div className="text-base font-extrabold text-slate-900 mt-2.5 pt-1.5 border-t border-slate-100">
-                  R$ 50,00
-                </div>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setSongCount(5)}
+                  className={`h-full w-full min-w-0 rounded-lg border p-3 pt-4 text-left transition-colors flex flex-col justify-between ${
+                    songCount === 5
+                      ? "border-amber-500 bg-amber-50/70 ring-1 ring-amber-500/20 shadow-sm"
+                      : "border-slate-200 bg-white hover:border-amber-300 hover:bg-amber-50/30"
+                  }`}
+                >
+                  <div>
+                    <span className="block whitespace-nowrap text-xs font-extrabold leading-tight text-slate-900">Combo 5 músicas</span>
+                    <span className="mt-1 flex min-w-0 items-center gap-1 text-[8px] font-semibold leading-tight">
+                      <span className="shrink-0 rounded-sm bg-amber-100 px-1 py-0.5 font-extrabold text-amber-900">R$ 10/un.</span>
+                      <span className="min-w-0 truncate text-emerald-700">Poupe R$ 25</span>
+                    </span>
+                  </div>
+                  <span className="mt-2.5 block border-t border-slate-200/80 pt-2 text-base font-black leading-none text-slate-900">R$ 50,00</span>
+                </button>
+              </div>
             </div>
 
             {/* Ajuste Fino de Quantidade */}
-            <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200">
               <span className="text-xs font-medium text-slate-600">Outra quantidade:</span>
               <div className="flex items-center gap-3">
                 <button
@@ -261,18 +271,13 @@ export default function OrderAppCard() {
           </div>
 
           {/* Resumo do Pedido */}
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-xs font-bold text-slate-600 uppercase tracking-wide block">
-                  Total do Pedido
-                </span>
-                <span className="text-xs text-slate-400">
-                  {songCount} {songCount === 1 ? "música selecionada" : "músicas selecionadas"}
-                </span>
-              </div>
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 sm:p-4 mb-5">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200/80 mb-3">
+              <span className="text-xs font-bold text-slate-600 uppercase tracking-wide">
+                Total do Pedido
+              </span>
               <div className="text-right">
-                <span className="text-2xl font-black text-slate-900">
+                <span className="text-xl font-black text-slate-900">
                   R$ {totalPrice},00
                 </span>
                 {savings > 0 && (
@@ -283,29 +288,30 @@ export default function OrderAppCard() {
               </div>
             </div>
 
-            <div className="mt-3.5 pt-3 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-[11px] text-slate-500">
+            {/* Garantias rápidas */}
+            <div className="grid grid-cols-2 gap-1 text-[9px] leading-tight text-slate-600">
               <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                <span>Entrega em até 48 horas</span>
+                <Clock className="h-3 w-3 shrink-0 text-amber-600" />
+                <span className="whitespace-nowrap">Entrega em até 48 horas</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>Áudio profissional 48 kHz</span>
+                <ShieldCheck className="h-3 w-3 shrink-0 text-emerald-600" />
+                <span className="whitespace-nowrap">Áudio tratado</span>
               </div>
             </div>
           </div>
 
-          {/* Botão para Avançar para a Tela do Pix (Barreira) */}
+          {/* Botão para Avançar para a Tela de Pagamento (A Barreira) */}
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-base py-4 px-6 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm py-3.5 px-4 rounded-md whitespace-nowrap shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
           >
             <span>Avançar para Pagamento Pix (R$ {totalPrice},00)</span>
-            <ArrowRight className="w-5 h-5 ml-1" />
+            <ArrowRight className="w-4 h-4 ml-0.5" />
           </button>
 
-          <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
-            Passo 1 de 2: Defina sua música para gerar os dados de pagamento.
+          <p className="mt-2 whitespace-nowrap text-center text-[10px] font-medium leading-tight text-slate-500">
+            Passo 1 de 2: Informe a música para ver a chave Pix e finalizar.
           </p>
         </form>
       )}
@@ -319,58 +325,58 @@ export default function OrderAppCard() {
           <button
             type="button"
             onClick={() => setCurrentStep("form")}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors mb-4 cursor-pointer"
+            className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors mb-3 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5" />
             <span>Voltar e alterar música</span>
           </button>
 
           {/* Header do Pagamento */}
-          <div className="text-center pb-4 mb-5 border-b border-slate-100">
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+          <div className="border-b border-slate-100 pb-4 mb-4 text-center">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 mb-1.5">
+              <Sparkles className="w-3 h-3 text-amber-600" />
               Passo 2 de 2: Pagamento do Pedido
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+            <div className="text-2xl font-black text-slate-900 leading-tight">
               R$ {totalPrice},00
-            </h2>
-            <p className="text-xs text-slate-500 mt-1">
+            </div>
+            <p className="text-[11px] text-slate-500 mt-0.5 truncate">
               {songName} • {artistName} {customerName ? `(${customerName})` : ""}
             </p>
           </div>
 
           {/* Caixa da Chave Pix Nubank */}
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3.5 sm:p-4 mb-4 space-y-2.5">
             <div className="flex items-center justify-between text-xs">
               <span className="font-bold text-slate-700 uppercase tracking-wide">
-                Chave Pix (Nubank)
+                Chave Pix (Nubank):
               </span>
               <span className="text-[11px] text-slate-500 font-medium">
                 Favorecido: <b>Layon Costa</b>
               </span>
             </div>
 
-            <div className="flex items-center gap-2 p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <code className="text-xs sm:text-sm font-bold font-mono text-slate-800 flex-1 truncate px-2 select-all">
+            <div className="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 shadow-sm">
+              <code className="text-xs sm:text-sm font-bold font-mono text-slate-800 flex-1 truncate select-all px-1">
                 {pixKey}
               </code>
               <button
                 type="button"
                 onClick={handleCopyPix}
-                className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-extrabold transition-all shrink-0 cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 cursor-pointer ${
                   copiedPix
-                    ? "bg-emerald-600 text-white"
-                    : "bg-slate-900 hover:bg-slate-800 text-white shadow-sm"
+                    ? "bg-emerald-500 text-white"
+                    : "bg-slate-900 hover:bg-slate-800 text-white"
                 }`}
               >
                 {copiedPix ? (
                   <>
-                    <Check className="w-4 h-4 text-white" />
+                    <Check className="w-3.5 h-3.5" />
                     <span>Copiada!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4" />
+                    <Copy className="w-3.5 h-3.5" />
                     <span>Copiar Chave</span>
                   </>
                 )}
@@ -378,28 +384,24 @@ export default function OrderAppCard() {
             </div>
 
             {copiedPix && (
-              <p className="text-[11px] text-emerald-600 font-bold animate-fadeIn">
-                ✓ Chave copiada com sucesso! Abra o app do seu banco e faça a transferência de R$ {totalPrice},00.
+              <p className="text-[10px] text-emerald-700 font-bold leading-tight">
+                ✓ Chave copiada! Abra o app do seu banco e faça o Pix de R$ {totalPrice},00.
               </p>
             )}
           </div>
 
           {/* Instruções Rápidas */}
-          <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 text-xs text-amber-900 space-y-1.5 mb-6">
-            <span className="font-extrabold block text-amber-950 mb-1">
-              Como finalizar seu pedido:
+          <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200 text-[11px] text-amber-900 space-y-1 mb-4">
+            <span className="font-extrabold block text-amber-950">
+              Instruções para liberação:
             </span>
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-1.5">
               <span className="font-bold text-amber-800">1.</span>
-              <span>Clique no botão preto acima para <b>Copiar a Chave Pix</b>.</span>
+              <span>Copie a chave Pix acima e transfira <b>R$ {totalPrice},00</b>.</span>
             </div>
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-1.5">
               <span className="font-bold text-amber-800">2.</span>
-              <span>Faça a transferência de <b>R$ {totalPrice},00</b> no seu banco.</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="font-bold text-amber-800">3.</span>
-              <span>Clique no botão verde abaixo para <b>enviar o comprovante no WhatsApp</b>!</span>
+              <span>Clique no botão verde abaixo para <b>enviar o comprovante no WhatsApp</b>.</span>
             </div>
           </div>
 
@@ -409,14 +411,14 @@ export default function OrderAppCard() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCopyPix}
-            className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-base py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-[0.99] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm py-3 px-4 rounded-md whitespace-nowrap shadow-md hover:shadow-lg transition-all active:scale-[0.99] cursor-pointer"
           >
-            <WhatsappIcon className="w-6 h-6 text-white shrink-0" />
+            <WhatsappIcon className="w-5 h-5 text-white shrink-0" />
             <span>Já Fiz o Pix! Enviar Comprovante</span>
           </a>
 
-          <p className="text-center text-[11px] text-slate-400 mt-3 font-medium">
-            Seu pedido entra na fila prioritária de produção assim que você enviar o comprovante!
+          <p className="mt-2 whitespace-nowrap text-center text-[10px] font-medium leading-tight text-slate-500">
+            Seu pedido entra na fila prioritária de produção assim que enviar o comprovante!
           </p>
         </div>
       )}

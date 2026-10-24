@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Heart, Copy, Check, X, Sparkles } from "lucide-react";
 
 interface DonationModalProps {
@@ -9,168 +9,104 @@ interface DonationModalProps {
 }
 
 const suggestedValues = [
-  { label: "R$ 2,00", subtitle: "Um Café ☕", popular: false },
-  { label: "R$ 5,00", subtitle: "Um Chopp 🍻", popular: false },
+  { label: "R$ 2,00", subtitle: "Um café ☕", popular: false },
+  { label: "R$ 5,00", subtitle: "Um chopp 🍻", popular: false },
   { label: "R$ 10,00", subtitle: "Incentivo VIP", popular: true },
-  { label: "Livre", subtitle: "Qualquer Valor 💖", popular: false },
+  { label: "Livre", subtitle: "Qualquer valor 💖", popular: false },
 ];
 
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [copied, setCopied] = useState(false);
   const pixKey = "f17a79b0-60f0-4eec-9e09-0d3fb8c50c02";
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
-  const handleCopyPix = () => {
-    navigator.clipboard.writeText(pixKey);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+  const handleCopyPix = async () => {
+    try {
+      await navigator.clipboard.writeText(pixKey);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-slate-950/70 p-[2px] backdrop-blur-sm"
       onClick={onClose}
     >
-      {/* Container do Modal */}
-      <div 
-        className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()}
+      <section
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="donation-title"
+        className="my-auto w-full max-w-md overflow-hidden rounded-lg border border-slate-200 bg-white shadow-2xl sm:rounded-lg"
+        onClick={(event) => event.stopPropagation()}
       >
-        {/* Faixa Superior Temática */}
-        <div className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-5 py-4 text-slate-950 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-white/90 text-rose-500 flex items-center justify-center shadow-xs shrink-0">
-              <Heart className="w-4 h-4 fill-rose-500 text-rose-500" />
-            </div>
-            <div>
-              <h3 className="text-sm font-black tracking-tight leading-tight">
-                Apoie o Lions Karaokê
-              </h3>
-              <p className="text-[11px] font-bold text-slate-900/80">
-                Ajude a manter os karaokês 4K grátis no YouTube
-              </p>
+        <header className="flex items-center justify-between gap-3 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-3 text-slate-950 sm:px-5 sm:py-4">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/90 text-rose-500">
+              <Heart className="h-4 w-4 fill-rose-500" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <h2 id="donation-title" className="text-sm font-black leading-tight">Apoie o Lions Karaokê</h2>
+              <p className="mt-0.5 text-[11px] font-medium leading-snug text-slate-900/80">Ajude a manter os karaokês grátis no YouTube</p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-black/10 hover:bg-black/20 text-slate-950 flex items-center justify-center transition-colors cursor-pointer"
-            aria-label="Fechar"
-          >
-            <X className="w-4 h-4" />
+          <button type="button" onClick={onClose} aria-label="Fechar janela de apoio" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/10 hover:bg-black/20">
+            <X className="h-4 w-4" />
           </button>
-        </div>
+        </header>
 
-        {/* Conteúdo */}
-        <div className="p-5">
-          <p className="text-xs text-slate-600 leading-relaxed text-center mb-4">
-            Gosta de cantar com a família e amigos? Sua contribuição de <strong>qualquer valor via Pix</strong> ajuda nos custos de produção, instrumentais de estúdio e sincronização 4K!
+        <div className="max-h-[calc(100dvh-5.25rem)] overflow-y-auto p-4 sm:p-5">
+          <p className="mb-3 text-center text-xs leading-relaxed text-slate-600">
+            Sua contribuição via Pix ajuda nos custos de produção e mantém os karaokês disponíveis para todos.
           </p>
 
-          {/* Sugestões Ilustrativas de Apoio (Vitrine de Valores) */}
-          <div className="mb-4">
-            <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 text-center mb-3">
-              Sugestões de Apoio ao Canal:
-            </span>
-            <div className="grid grid-cols-4 gap-2 pt-3">
+          <div>
+            <h3 className="mb-2 text-center text-[10px] font-bold uppercase tracking-wide text-slate-500">Sugestões de apoio</h3>
+            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {suggestedValues.map((item) => (
-                <div
-                  key={item.label}
-                  className={`rounded-2xl text-center relative flex flex-col justify-center items-center transition-all select-none min-h-[68px] px-1.5 ${
-                    item.popular
-                      ? "bg-amber-50/90 border-2 border-amber-400 shadow-xs pt-3 pb-2"
-                      : "bg-slate-50/80 border border-slate-200 py-2.5"
-                  }`}
-                >
-                  {/* Tag Super Fina, Discreta e com bastante espaço do texto */}
-                  {item.popular && (
-                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[7px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-xs border border-amber-300">
-                      Mais Escolhido ⭐
-                    </span>
-                  )}
-                  <div className={`text-xs font-black leading-tight ${item.popular ? "text-amber-950 mt-1" : "text-slate-800"}`}>
-                    {item.label}
-                  </div>
-                  <div className="text-[9px] text-slate-500 mt-1 leading-tight font-medium">
-                    {item.subtitle}
-                  </div>
-                </div>
+                <li key={item.label} className={`flex min-h-[66px] min-w-0 flex-col items-center justify-center rounded-lg border px-2 py-2 text-center ${item.popular ? "border-amber-400 bg-amber-50" : "border-slate-200 bg-slate-50"}`}>
+                  {item.popular && <span className="mb-1 rounded-md bg-amber-400 px-1.5 py-0.5 text-[8px] font-black uppercase leading-none text-amber-950">Mais escolhido</span>}
+                  <span className="text-xs font-extrabold leading-tight text-slate-900">{item.label}</span>
+                  <span className="mt-0.5 text-[10px] leading-tight text-slate-500">{item.subtitle}</span>
+                </li>
               ))}
-            </div>
-            <p className="text-[10px] text-slate-400 text-center mt-3">
-              Copie a chave abaixo e digite o valor que desejar no app do seu banco.
-            </p>
+            </ul>
+            <p className="mt-2 text-center text-[10px] leading-snug text-slate-500">Escolha o valor no aplicativo do seu banco.</p>
           </div>
 
-          {/* Caixa da Chave Pix com Copiar */}
-          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 my-4">
-            <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 mb-1.5">
-              <span>Chave Pix (Nubank):</span>
-              <span className="text-slate-700 font-semibold">Pague por qualquer banco</span>
+          <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50 p-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5 text-[10px] font-semibold text-slate-600">
+              <span>Chave Pix (Nubank)</span>
+              <span className="text-slate-500">Aceita em qualquer banco</span>
             </div>
-
-            <div className="flex items-center gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
-              <span className="font-mono text-xs font-bold text-slate-900 truncate flex-1">
-                {pixKey}
-              </span>
-              <button
-                type="button"
-                onClick={handleCopyPix}
-                className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
-                  copied
-                    ? "bg-emerald-600 text-white"
-                    : "bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-xs"
-                }`}
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Copiado!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copiar</span>
-                  </>
-                )}
+            <div className="flex min-w-0 items-center gap-2 rounded-lg border border-slate-200 bg-white p-2">
+              <code className="min-w-0 flex-1 truncate text-[11px] font-bold text-slate-900 sm:text-xs">{pixKey}</code>
+              <button type="button" onClick={handleCopyPix} className={`inline-flex min-h-9 shrink-0 items-center justify-center gap-1 rounded-lg px-3 text-xs font-extrabold ${copied ? "bg-emerald-600 text-white" : "bg-amber-500 text-slate-950 hover:bg-amber-600"}`}>
+                {copied ? <Check className="h-3.5 w-3.5" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
+                {copied ? "Copiada" : "Copiar"}
               </button>
             </div>
-
-            <p className="text-[10px] text-slate-400 mt-2 text-center">
-              Titular: <strong>Layon Costa</strong> • Banco: Nubank
-            </p>
+            <p className="mt-2 text-center text-[10px] text-slate-500">Titular: <strong>Layon Costa</strong> · Nubank</p>
           </div>
 
-          {/* Botão de Ação Principal Limpo e Bonito (Sem chave embutida no texto) */}
-          <button
-            type="button"
-            onClick={handleCopyPix}
-            className={`w-full py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer active:scale-[0.99] ${
-              copied
-                ? "bg-emerald-600 text-white"
-                : "bg-emerald-500 hover:bg-emerald-600 text-white shadow-emerald-500/20"
-            }`}
-          >
-            {copied ? (
-              <>
-                <Check className="w-4 h-4" />
-                <span>Chave Pix Copiada com Sucesso!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4" />
-                <span>Copiar Chave Pix</span>
-              </>
-            )}
-          </button>
-
-          <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[11px] text-slate-500 font-medium">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Qualquer valor incentiva muito o canal. Gratidão! ❤️</span>
-          </div>
+          <p role="status" aria-live="polite" className="mt-3 flex items-center justify-center gap-1.5 border-t border-slate-100 pt-3 text-center text-[11px] leading-snug text-slate-500">
+            <Sparkles className="h-3.5 w-3.5 shrink-0 text-amber-500" aria-hidden="true" />
+            {copied ? "Chave Pix copiada. Obrigado pelo apoio!" : "Qualquer valor incentiva muito o canal. Gratidão! ❤️"}
+          </p>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
