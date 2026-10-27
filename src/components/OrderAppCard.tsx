@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Music, Mic, User, Copy, Check, Clock, ShieldCheck, Sparkles, AlertCircle, ArrowLeft, ArrowRight } from "lucide-react";
+import { Music, Mic, User, Copy, Check, Clock, ShieldCheck, Sparkles, AlertCircle, ArrowLeft, ArrowRight, SlidersHorizontal } from "lucide-react";
 
 // Ícone Oficial do WhatsApp em SVG limpo (sem emoji)
 const WhatsappIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -19,6 +19,8 @@ export default function OrderAppCard() {
   const [songName, setSongName] = useState("");
   const [artistName, setArtistName] = useState("");
   const [customerName, setCustomerName] = useState("");
+  const [songPitch, setSongPitch] = useState("Tom Original (Padrão)");
+  const [customPitch, setCustomPitch] = useState("");
   const [songCount, setSongCount] = useState(1);
   const [copiedPix, setCopiedPix] = useState(false);
   const [currentStep, setCurrentStep] = useState<"form" | "payment">("form");
@@ -74,12 +76,17 @@ export default function OrderAppCard() {
     const musicText = songName.trim() ? songName.trim() : "A definir";
     const artistText = artistName.trim() ? artistName.trim() : "A definir";
     const nameText = customerName.trim() ? customerName.trim() : "Cliente Lions";
+    const pitchText =
+      songPitch === "Outro tom (especificar)" && customPitch.trim()
+        ? `Outro tom (${customPitch.trim()})`
+        : songPitch;
 
     const msg = [
       "Olá Lions Karaokê! Acabei de fazer o Pix para meu pedido VIP Express:",
       "",
       `*Música:* ${musicText}`,
       `*Cantor/Artista:* ${artistText}`,
+      `*Tom do Playback:* ${pitchText}`,
       `*Nome para a Playlist:* ${nameText}`,
       `*Quantidade:* ${songCount} ${songCount === 1 ? "música" : "músicas"}`,
       `*Valor Pago:* R$ ${totalPrice},00`,
@@ -175,6 +182,51 @@ export default function OrderAppCard() {
                   }`}
                 />
               </div>
+            </div>
+
+            {/* Campo Tom da Música */}
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Tom da Música
+                </label>
+                <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-full">
+                  Sem Custo Extra ✨
+                </span>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <SlidersHorizontal className="w-4 h-4" />
+                </div>
+                <select
+                  value={songPitch}
+                  onChange={(e) => setSongPitch(e.target.value)}
+                  className="w-full pl-10 pr-8 py-3 rounded-lg border border-slate-200 bg-slate-50/50 text-slate-900 text-sm font-semibold focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all cursor-pointer"
+                >
+                  <option value="Tom Original (Padrão)">🎵 Tom Original (Gravação Oficial)</option>
+                  <option value="-1 Semitom (Meio tom abaixo)">⬇️ -1 Semitom (Meio tom abaixo - Mais grave)</option>
+                  <option value="-2 Semitons (1 tom abaixo)">⬇️ -2 Semitons (1 tom abaixo - Confortável)</option>
+                  <option value="-3 Semitons (1 tom e meio abaixo)">⬇️ -3 Semitons (1 tom e meio abaixo)</option>
+                  <option value="+1 Semitom (Meio tom acima)">⬆️ +1 Semitom (Meio tom acima - Mais agudo)</option>
+                  <option value="+2 Semitons (1 tom acima)">⬆️ +2 Semitons (1 tom acima)</option>
+                  <option value="+3 Semitons (1 tom e meio acima)">⬆️ +3 Semitons (1 tom e meio acima)</option>
+                  <option value="Adaptar para Voz Feminina">👩 Adaptar para Voz Feminina</option>
+                  <option value="Adaptar para Voz Masculina">👨 Adaptar para Voz Masculina</option>
+                  <option value="Outro tom (especificar)">✍️ Outro tom personalizado (especificar)</option>
+                </select>
+              </div>
+              {songPitch === "Outro tom (especificar)" && (
+                <input
+                  type="text"
+                  value={customPitch}
+                  onChange={(e) => setCustomPitch(e.target.value)}
+                  placeholder="Ex: -4 semitons, ou tom do cover do Gusttavo Lima..."
+                  className="mt-2 w-full px-3 py-2 text-xs rounded-lg border border-amber-300 bg-amber-50/50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+                />
+              )}
+              <p className="text-[10px] text-slate-500 mt-1 leading-tight">
+                Ajustamos o tom para a sua voz mantendo o ritmo e a qualidade do áudio 100% perfeitos!
+              </p>
             </div>
 
             {/* Campo Nome do Solicitante */}
@@ -341,7 +393,7 @@ export default function OrderAppCard() {
               R$ {totalPrice},00
             </div>
             <p className="text-[11px] text-slate-500 mt-0.5 truncate">
-              {songName} • {artistName} {customerName ? `(${customerName})` : ""}
+              {songName} • {artistName} • {songPitch === "Outro tom (especificar)" && customPitch.trim() ? customPitch.trim() : songPitch} {customerName ? `(${customerName})` : ""}
             </p>
           </div>
 

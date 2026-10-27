@@ -1,5 +1,5 @@
 import React from "react";
-import { ExternalLink } from "lucide-react";
+import { Shield, Mail } from "lucide-react";
 
 const YoutubeIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg
@@ -14,26 +14,30 @@ const YoutubeIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export default function AppFooter() {
   return (
-    <footer className="w-full mx-auto mt-8 mb-8 px-[2px] text-center">
+    <footer className="w-full max-w-xl mx-auto mt-12 mb-8 px-4 text-center">
       <div className="pt-8 border-t border-slate-200">
         <p className="text-xs font-bold text-slate-800 tracking-tight">
           Lions Karaokê • Produções Musicais & Playbacks VIP Express
         </p>
 
         <p className="text-[11px] text-slate-500 mt-1 max-w-md mx-auto leading-relaxed">
-          Os karaokês são preparados com ferramentas de remoção vocal. O resultado pode variar conforme a gravação original; confira as demonstrações do canal antes de pedir.
+          Canal dedicado à produção de karaokês profissionais em 4K e instrumentais de alta fidelidade para Smart TV.
         </p>
 
-        <div className="mt-4 flex justify-center text-xs font-medium text-slate-500">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-4 text-xs text-slate-500 font-medium">
+          <span className="flex items-center gap-1.5">
+            <Mail className="w-3.5 h-3.5 text-slate-400" />
+            layoncosta.digital@gmail.com
+          </span>
+          <span className="hidden sm:inline">•</span>
           <a
             href="https://www.youtube.com/@LionsKaraoke"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 shadow-sm transition-colors hover:border-red-200 hover:text-red-600"
+            className="flex items-center gap-1.5 text-slate-600 hover:text-red-600 transition-colors font-semibold"
           >
             <YoutubeIcon className="w-3.5 h-3.5 text-red-600" />
             Canal Oficial no YouTube
-            <ExternalLink className="h-3 w-3" aria-hidden="true" />
           </a>
         </div>
 
