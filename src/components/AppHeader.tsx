@@ -15,8 +15,8 @@ const YoutubeIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 export default function AppHeader() {
   return (
-    <header className="w-full bg-white border-b border-slate-200/80 sticky top-[33px] z-40 backdrop-blur-md bg-white/95">
-      <div className="max-w-4xl mx-auto px-3.5 py-2.5 flex items-center justify-between">
+    <header className="w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+      <div className="w-full px-3.5 py-2.5 flex items-center justify-between">
         {/* Brand identity */}
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -44,7 +44,7 @@ export default function AppHeader() {
           href="https://www.youtube.com/@LionsKaraoke"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs shadow-sm shadow-red-600/25 transition-all whitespace-nowrap shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold text-xs shadow-sm shadow-red-600/25 transition-all whitespace-nowrap shrink-0"
         >
           <YoutubeIcon className="w-4 h-4 fill-white" />
           <span>Canal YouTube</span>

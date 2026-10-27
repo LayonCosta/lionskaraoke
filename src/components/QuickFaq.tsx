@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Como recebo a minha música?",
-    a: "A música é publicada no YouTube em altíssima definição (Smart TV 4K) com áudio tratado em 48 kHz. Criamos uma playlist exclusiva com o seu nome para você acessar e compartilhar quando quiser.",
+    a: "Publicamos o karaokê no YouTube em vídeo de até 4K e criamos uma playlist com o nome escolhido por você. O áudio é preparado com ferramentas de remoção vocal, e o resultado pode variar conforme a gravação original.",
   },
   {
     q: "Posso pedir qualquer cantor ou gênero musical?",
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "Vocês alteram o tom da música (mais agudo ou mais grave)?",
-    a: "Sim! No próprio formulário você pode escolher o tom ideal para sua voz (semitons acima/abaixo ou adaptação para voz masculina/feminina) sem nenhum custo extra. Mantemos a qualidade e o andamento originais.",
+    a: "Sim! No formulário de pedido você pode escolher o tom ideal para sua voz (semitons acima/abaixo ou adaptação para voz masculina/feminina) sem nenhum custo extra. Mantemos a qualidade e o andamento originais.",
   },
   {
     q: "Como funciona o desconto no combo de 5 músicas?",
@@ -30,8 +30,8 @@ export default function QuickFaq() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="duvidas" className="w-full max-w-xl mx-auto mt-8 px-2 sm:px-0">
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <section id="duvidas" className="w-full mt-4 px-0">
+      <div className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm">
         <h2 className="text-base font-bold text-slate-900 tracking-tight mb-4">
           Dúvidas Frequentes
         </h2>
